@@ -87,7 +87,11 @@
       <section id="main-content">
           <section class="wrapper site-min-height">
 			<h3><i class="fa fa-angle-right"></i> Your Cases</h3>
-
+{% for case in cases %}
+              <h3><a href="/lawyered/divorce/{{case.id}}/">{{case.spouse}}</h3>
+              <h4>{{case.gender}}</h4>
+              <h5>{{case.id}}
+            {% endfor %}
               <div class="row mt">
           		<div class="col-lg-12">
           		
@@ -132,7 +136,6 @@
 								<button class="btn btn-small btn-theme04">FULL REPORT</button>
 							</div>
 						</div><!--/col-md-4 -->
-						
 						
             		 </div><!--/row -->
             	</div>

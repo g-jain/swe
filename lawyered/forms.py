@@ -1,13 +1,14 @@
 from django import forms
 from django.contrib.auth.models import User
 import datetime
-from .models import divorceForm
+from .models import *
 
+#login
 class LoginForm(forms.Form):
 	username = forms.CharField()
 	password = forms.CharField(widget=forms.PasswordInput)
 
-	
+#register	
 class UserRegistrationForm(forms.ModelForm):
 	password = forms.CharField(label='Password',widget=forms.PasswordInput)
 	password2 = forms.CharField(label='Repeat password',widget=forms.PasswordInput)
@@ -22,6 +23,19 @@ class UserRegistrationForm(forms.ModelForm):
 				raise forms.ValidationError('Passwords don\'t match.')
 			return cd['password2']
 
+#question for forum
+class QuestionForm(forms.ModelForm):
+    class Meta:
+        model = Question
+        fields = ('question_text', 'tags')
+
+#forum
+class UserProfileForm(forms.ModelForm):
+    class Meta:
+        model = UserProfile
+        fields = ('website', 'picture')
+
+#search in forum
 class SearchForm(forms.Form):
 	query = forms.CharField()
 
