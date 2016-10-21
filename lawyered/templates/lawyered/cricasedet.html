@@ -69,7 +69,7 @@
                   </li>
 				  
 				  <li class="active" class="mt">
-                       <a href="{% url 'lawyered:divorce' %}">
+                       <a href="{% url 'lawyered:add_cases' %}">
 						  <i class="fa fa-tasks"></i>
                           <span>Add a new Case</span>
                       </a>
@@ -87,8 +87,8 @@
       <section id="main-content">
           <section class="wrapper site-min-height">
 			
-          <h1>{{case.name}}</h1>
-          <h2>{{case.budget}}</h2>
+          <h1>{{ccase.name}}</h1>
+          <h2>{{ccase.budget}}</h2>
       </section>
 
       <!--main content end-->

@@ -14,44 +14,44 @@ import datetime
 
 # Create your views here.
 def index(request) :
-	return render(request, 'lawyered/index.html')
-	
+    return render(request, 'lawyered/index.html')
+    
 def login_view(request):
-	if request.method== 'POST':
+    if request.method== 'POST':
 
-		form = LoginForm(request.POST)
-		if form.is_valid():
-			cd = form.cleaned_data
-			user = authenticate(username=cd['username'], password=cd['password'])
-			username = form.cleaned_data['username']
-			if user is not None:
-				login(request,user)
-				return render(request,'lawyered/dashboard.html', {'username': username})
-			else:
-				return render(request, 'lawyered/invalid.html')
+        form = LoginForm(request.POST)
+        if form.is_valid():
+            cd = form.cleaned_data
+            user = authenticate(username=cd['username'], password=cd['password'])
+            username = form.cleaned_data['username']
+            if user is not None:
+                login(request,user)
+                return render(request,'lawyered/dashboard.html', {'username': username})
+            else:
+                return render(request, 'lawyered/invalid.html')
 
-	else:
-		form = LoginForm()
-		return render(request, 'lawyered/login.html', {'form': form})
+    else:
+        form = LoginForm()
+        return render(request, 'lawyered/login.html', {'form': form})
 
 def forumlogin(request):
     if request.method== 'POST':
-    	form = LoginForm(request.POST)
-    	if form.is_valid():
-    		cd = form.cleaned_data
-    		user = authenticate(username=cd['username'], password=cd['password'])
-    		username = form.cleaned_data['username']
-    		if user is not None:
-    			login(request,user)
-    			return render(request,'lawyered/forum.html', {'username': username})
-    		else:
-    			return render(request, 'lawyered/invalid.html')
+        form = LoginForm(request.POST)
+        if form.is_valid():
+            cd = form.cleaned_data
+            user = authenticate(username=cd['username'], password=cd['password'])
+            username = form.cleaned_data['username']
+            if user is not None:
+                login(request,user)
+                return render(request,'lawyered/forum.html', {'username': username})
+            else:
+                return render(request, 'lawyered/invalid.html')
     else:
-    	form = LoginForm()
-    	return render(request, 'lawyered/login.html', {'form': form})
+        form = LoginForm()
+        return render(request, 'lawyered/login.html', {'form': form})
 
     
-	
+    
 def register(request):
     context = RequestContext(request)
 
@@ -83,19 +83,25 @@ def register(request):
 
 @login_required
 def dashboard(request):
-	username = request.user.username
-	cases = divorceForm.objects.filter(name__contains = username)
-	return render(request, 'lawyered/dashboard.html', {'username': username, 'cases':cases})
+    username = request.user.username
+    divcases = divorceForm.objects.filter(name__contains = username)
+    duicases = duiForm.objects.filter(name__contains = username)
+    cricases = criminalForm.objects.filter(name__contains = username)
+    precases = prenupForm.objects.filter(name__contains = username)
+    mercases = mergerForm.objects.filter(name__contains = username)
+    estcases = estateForm.objects.filter(name__contains = username)
+    # Add a piece of code for all forms
+    return render(request, 'lawyered/dashboard.html', {'username': username, 'divcases':divcases, 'duicases':duicases, 'cricases' : cricases,'mercases': mercases, 'precases' : precases, 'estcases' : estcases })
 
-
+#Now get all lawyer objects
 def person_list(request):
-	persons = person.objects.all()
-	query = request.GET.get("q")
-	if query:
-		persons = persons.filter(area__contains = query)
-	return render(request,'lawyered/search.html',{'persons': persons, 'username':request.user.username})
+    persons = person.objects.all()
+    query = request.GET.get("q")
+    if query:
+        persons = persons.filter(area__contains = query)
+    return render(request,'lawyered/search.html',{'persons': persons, 'username':request.user.username})
 
-#	
+#   
 def search_question(request):
     if request.method == 'POST':
         word = request.POST['word']
@@ -192,39 +198,39 @@ def profile(request, user_id):
     return render(request, 'lawyered/profile.html', {'user': user})
 
 def add(request):
-	if request.user.is_anonymous():
-		return HttpResponseRedirect("/login/")
+    if request.user.is_anonymous():
+        return HttpResponseRedirect("/login/")
 
-	if request.method == 'POST':
-		question_text = request.POST['question']
-		tags_text = request.POST['tags']
-		user_id = request.POST['user']
-		user_ob = User.objects.get(id=user_id)
-		user = UserProfile.objects.get(user=user_ob)
+    if request.method == 'POST':
+        question_text = request.POST['question']
+        tags_text = request.POST['tags']
+        user_id = request.POST['user']
+        user_ob = User.objects.get(id=user_id)
+        user = UserProfile.objects.get(user=user_ob)
 
-		if question_text.strip() == '':
-			return render(request, 'lawyered/add.html', {'message': 'Empty'})
+        if question_text.strip() == '':
+            return render(request, 'lawyered/add.html', {'message': 'Empty'})
 
-		pub_date = datetime.datetime.now()
-		q = Question()
-		q.question_text = question_text
-		q.pub_date = pub_date
-		q.user_data = user
-		q.save()
+        pub_date = datetime.datetime.now()
+        q = Question()
+        q.question_text = question_text
+        q.pub_date = pub_date
+        q.user_data = user
+        q.save()
 
-		tags = tags_text.split(',')
-		for tag in tags:
-			try:
-				t = Tag.objects.get(slug=tag)
-				q.tags.add(t)
-			except Tag.DoesNotExist:
-				t=Tag()
-				t.slug = tag
-				t.save()
-				q.tags.add(t)
+        tags = tags_text.split(',')
+        for tag in tags:
+            try:
+                t = Tag.objects.get(slug=tag)
+                q.tags.add(t)
+            except Tag.DoesNotExist:
+                t=Tag()
+                t.slug = tag
+                t.save()
+                q.tags.add(t)
      
-		return HttpResponseRedirect('/lawyered/forum')
-	return render(request, 'lawyered/add.html')
+        return HttpResponseRedirect('/lawyered/forum')
+    return render(request, 'lawyered/add.html')
 #    return HttpResponse(template.render(context))
 
 @login_required
@@ -463,33 +469,159 @@ def thumb(request, user_id, question_id, op_code):
 
     return render(request, 'lawyered/detail.html', {'question': question, 'answers': answers})
 
-
+def form_list(request):
+    return render(request, 'lawyered/add_cases.html')
+    
 def divorce(request):
-	if request.method== 'POST':
-	#	user_id = request.POST.get('user')
-	#	user_ob = User.objects.get(id=user_id)
-		form = divorcecaseForm(request.POST)
-	#	user = UserProfile.objects.get(user=user_ob)
+    if request.method== 'POST':
+    #   user_id = request.POST.get('user')
+    #   user_ob = User.objects.get(id=user_id)
+        form = divorcecaseForm(request.POST)
+    #   user = UserProfile.objects.get(user=user_ob)
 
-		if form.is_valid():
-			
-			new_case = form.save(commit=False)
-	#		new_case.name = user
-			new_case.save()
-			return render(request,'lawyered/done.html', {'username':request.user.username})
-		else:
-			return render(request, 'lawyered/invalid.html')
+        if form.is_valid():
+            
+            new_case1 = form1.save(commit=False)
+    #       new_case.name = user
+            new_case.save()
+            return render(request,'lawyered/done.html', {'username':request.user.username})
+        else:
+            return render(request, 'lawyered/invalid.html')
 
-	else:
-		form = divorcecaseForm()
-		return render(request, 'lawyered/divorce.html', {'form': form, 'username':request.user.username})
-	
+    else:
+        form = divorcecaseForm()
+        return render(request, 'lawyered/divorce.html', {'form': form, 'username':request.user.username})
+        
+def dui(request):
+    if request.method== 'POST':
+    #   user_id = request.POST.get('user')
+    #   user_ob = User.objects.get(id=user_id)
+        form = duiCaseForm(request.POST)
+    #   user = UserProfile.objects.get(user=user_ob)
+
+        if form.is_valid():
+            
+            new_case = form.save(commit=False)
+    #       new_case.name = user
+            new_case.save()
+            return render(request,'lawyered/done.html', {'username':request.user.username})
+        else:
+            return render(request, 'lawyered/invalid.html')
+
+    else:
+        form = duiCaseForm()
+        return render(request, 'lawyered/dui.html', {'form': form, 'username':request.user.username})
+        
+def criminal(request):
+    if request.method== 'POST':
+    #   user_id = request.POST.get('user')
+    #   user_ob = User.objects.get(id=user_id)
+        form = criminalCaseForm(request.POST)
+    #   user = UserProfile.objects.get(user=user_ob)
+
+        if form.is_valid():
+            
+            new_case = form.save(commit=False)
+    #       new_case.name = user
+            new_case.save()
+            return render(request,'lawyered/done.html', {'username':request.user.username})
+        else:
+            return render(request, 'lawyered/invalid.html')
+
+    else:
+        form = criminalCaseForm()
+        return render(request, 'lawyered/criminal.html', {'form': form, 'username':request.user.username})
+        
+def prenup(request):
+    if request.method== 'POST':
+    #   user_id = request.POST.get('user')
+    #   user_ob = User.objects.get(id=user_id)
+        form = prenupCaseForm(request.POST)
+    #   user = UserProfile.objects.get(user=user_ob)
+
+        if form.is_valid():
+            
+            new_case = form.save(commit=False)
+    #       new_case.name = user
+            new_case.save()
+            return render(request,'lawyered/done.html', {'username':request.user.username})
+        else:
+            return render(request, 'lawyered/invalid.html')
+
+    else:
+        form = prenupCaseForm()
+        return render(request, 'lawyered/prenup.html', {'form': form, 'username':request.user.username})
+        
+def merger(request):
+    if request.method== 'POST':
+    #   user_id = request.POST.get('user')
+    #   user_ob = User.objects.get(id=user_id)
+        form = mergerCaseForm(request.POST)
+    #   user = UserProfile.objects.get(user=user_ob)
+
+        if form.is_valid():
+            
+            new_case = form.save(commit=False)
+    #       new_case.name = user
+            new_case.save()
+            return render(request,'lawyered/done.html', {'username':request.user.username})
+        else:
+            return render(request, 'lawyered/invalid.html')
+
+    else:
+        form = mergerCaseForm()
+        return render(request, 'lawyered/merger.html', {'form': form, 'username':request.user.username})
+        
+def estate(request):
+    if request.method== 'POST':
+    #   user_id = request.POST.get('user')
+    #   user_ob = User.objects.get(id=user_id)
+        form = estateCaseForm(request.POST)
+    #   user = UserProfile.objects.get(user=user_ob)
+
+        if form.is_valid():
+            
+            new_case = form.save(commit=False)
+    #       new_case.name = user
+            new_case.save()
+            return render(request,'lawyered/done.html', {'username':request.user.username})
+        else:
+            return render(request, 'lawyered/invalid.html')
+
+    else:
+        form = estateCaseForm()
+        return render(request, 'lawyered/estate.html', {'form': form, 'username':request.user.username})
+        
+        
+
+    
 def forumlogout(request):
     logout(request)
     return HttpResponseRedirect('/lawyered/forum')
 
 
-def casedetail(request, divorceForm_id):
-  	case = divorceForm.objects.get(pk=divorceForm_id)
+def divcasedetail(request, divorceForm_id):
+    dcase = divorceForm.objects.get(pk=divorceForm_id)
+    return render(request, 'lawyered/divcasedet.html', {'dcase': dcase, 'username':request.user.username} )
+    
+def precasedetail(request, prenupForm_id):
+    pcase = prenupForm.objects.get(pk=prenupForm_id)
+    return render(request, 'lawyered/precasedet.html', {'pcase':pcase,'username':request.user.username})
+    
+def cricasedetail(request, criminalForm_id):
+    ccase = criminalForm.objects.get(pk=criminalForm_id)
+    return render(request, 'lawyered/cricasedet.html', {'ccase':ccase,'username':request.user.username})
+    
+def mercasedetail(request, mergerForm_id):
+    mcase = mergerForm.objects.get(pk=mergerForm_id)
+    return render(request, 'lawyered/mercasedet.html', {'mcase':mcase,'username':request.user.username})
+    
+def estcasedetail(request, estateForm_id):
+    ecase = estateForm.objects.get(pk=estateForm_id)
+    return render(request, 'lawyered/estcasedet.html', {'ecase':ecase,'username':request.user.username})
 
-  	return render(request, 'lawyered/casedet.html', {'case':case})
+def duicasedetail(request, duiForm_id):
+    ducase = duiForm.objects.get(pk=duiForm_id)
+    return render(request, 'lawyered/duicasedet.html', {'ducase': ducase,'username':request.user.username})
+    
+    

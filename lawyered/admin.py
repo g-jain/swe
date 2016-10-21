@@ -5,6 +5,11 @@ from django_markdown.admin import MarkdownModelAdmin
 # Register your models here.
 admin.site.register(person)
 admin.site.register(divorceForm)
+admin.site.register(duiForm)
+admin.site.register(criminalForm)
+admin.site.register(prenupForm)
+admin.site.register(mergerForm)
+admin.site.register(estateForm)
 admin.site.register(Question)
 admin.site.register(Answer, MarkdownModelAdmin)
 admin.site.register(Comment)

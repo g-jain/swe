@@ -69,7 +69,7 @@
                   </li>
 				  
 				  <li class="mt">
-                       <a href="{% url 'lawyered:divorce' %}">
+                       <a href="{% url 'lawyered:add_cases' %}">
 						  <i class="fa fa-tasks"></i>
                           <span>Add a new Case</span>
                       </a>
@@ -87,11 +87,34 @@
       <section id="main-content">
           <section class="wrapper site-min-height">
 			<h3><i class="fa fa-angle-right"></i> Your Cases</h3>
-{% for case in cases %}
-              <h3><a href="/lawyered/divorce/{{case.id}}/">{{case.spouse}}</h3>
-              <h4>{{case.gender}}</h4>
-              <h5>{{case.id}}
+{% for i in divcases %}
+              <h1><a href="/lawyered/divorce/{{i.id}}/">{{i.casetype}}</h1>
+              <h1>{{i.id}}<h1>
             {% endfor %}
+{% for j in precases %}
+              <h1><a href="/lawyered/prenup/{{j.id}}/">{{j.casetype}}</h1>
+              <h1>{{j.id}}</h1>
+              
+            {% endfor %}
+{% for k in cricases %}
+              <h1><a href="/lawyered/criminal/{{k.id}}/">{{k.casetype}}</h1>
+              <h1>{{k.id}}</h1>
+              
+            {% endfor %}
+{% for case in mercases %}
+              <h1><a href="/lawyered/merger/{{case.id}}/">{{case.casetype}}</h1>
+              <h1>{{case.id}}</h1>
+              
+            {% endfor %}
+{% for l in estcases %}
+              <h1><a href="/lawyered/estate/{{l.id}}/">{{l.casetype}}</h1>
+              <h1>{{l.id}}</h1>
+            {% endfor %}
+{% for m in duicases %}
+              <h1><a href="/lawyered/dui/{{m.id}}/">{{m.casetype}}</h1>
+              <h1>{{m.id}}</h1>
+            {% endfor %}
+
               <div class="row mt">
           		<div class="col-lg-12">
           		
