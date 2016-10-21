@@ -83,20 +83,7 @@ class Comment(models.Model):
 
 #divorce form
 class divorceForm(models.Model):
-	ASSETS = (
-    ('residential_property', 'Residential Property'),
-    ('investment_property', 'Investmant Property'),
-    ('investment_account', ' Investment Account(s) (stocks, bonds, mutual funds, etc.) '),
-    ('bank_account','Bank Account(s)'),
-    ('pension', 'pension, or other retirement plan'),
-    ('business','Business interest(s)'),
-    ('personal_property','Personal property (jewelry, cars, furniture, appliances, etc.) '),
-    ('others','Others'),
-    )
-	CHOICES1 = (('1', 'Yes',), ('2', 'No',),('3','Not Sure',))
-	CHOICES2 = (('1', 'Male',), ('2', 'Female',))
-	CHOICES3 = (('1', 'Yes',), ('2', 'No',))
-
+	
 #	name = models.ForeignKey(UserProfile)
 	name = models.CharField(max_length=250)
 	spouse = models.CharField('What is your Spouse\'s name?', max_length = 25)
@@ -109,3 +96,60 @@ class divorceForm(models.Model):
 	custody = models.CharField(max_length=250)
 	budget = models.CharField(max_length=250)
 	details = models.CharField(max_length=250)
+	casetype = models.CharField(max_length=250, default="Divorce")
+	
+class duiForm(models.Model):
+	name = models.CharField(max_length=250)
+	date_of_citation = models.DateField('When did you receive the DUI citation?', default = datetime.date.today)
+	tests = models.CharField(max_length=250)
+	bac = models.DecimalField(max_digits=6,decimal_places=2)
+	time_of_day = models.CharField(max_length=250)
+	reason = models.CharField(max_length=250)
+	past = models.CharField(max_length=250)
+	next_date = models.DateField(default = datetime.date.today + timedelta(days = 7))
+	budget = models.CharField(max_length=250)
+	details = models.CharField(max_length=250)
+	casetype = models.CharField(max_length=250, default="Dui")
+	
+class criminalForm(models.Model):
+	name = models.CharField(max_length=250)
+	offense = models.CharField(max_length=250)
+	offense_date = models.DateField(default = datetime.date.today)
+	situation = models.CharField(max_length=250)
+	agency = models.CharField(max_length=250)
+	court_past = models.CharField(max_length=250)
+	next_date = models.DateField(default = datetime.date.today)
+	worked = models.CharField(max_length=250)
+	budget = models.CharField(max_length=250)
+	details = models.CharField(max_length=250)
+	casetype = models.CharField(max_length=250, default="Criminal")
+	
+
+class prenupForm(models.Model):
+	name = models.CharField(max_length=250)
+	partner = models.CharField(max_length=250)
+	assets = models.CharField(max_length=250)
+	debt = models.CharField(max_length=250)
+	debt_details = models.CharField(max_length=250)
+	assets_exclude = models.CharField(max_length=250)
+	exclude_details = models.CharField(max_length=250)
+	budget = models.CharField(max_length=250)
+	casetype = models.CharField(max_length=250, default="Family")
+
+class mergerForm(models.Model):
+	name = models.CharField(max_length=250)
+	types = models.CharField(max_length=250)
+	names = models.CharField(max_length=250)
+	circumstances = models.CharField(max_length=250)
+	need = models.CharField(max_length=250)
+	budget = models.CharField(max_length=250)
+	casetype = models.CharField(max_length=250, default="Merger")
+class estateForm(models.Model):
+	name = models.CharField(max_length=250)
+	types = models.CharField(max_length=250)
+	property_type = models.CharField(max_length=250)
+	details = models.CharField(max_length=250)
+	need = models.CharField(max_length=250)
+	budget = models.CharField(max_length=250)
+	casetype = models.CharField(max_length=250, default="Estate")
+

@@ -136,6 +136,8 @@ a, a:hover, a:focus {
 }
 
 .btn-theme04 {
+  margin-top: 10px;
+  margin-bottom: 10px;
   color: #fff;
   background-color: #000055;
   border-color: #000055;

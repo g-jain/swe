@@ -88,32 +88,32 @@
       <section id="main-content">
           <section class="wrapper site-min-height">
 			<h3><i class="fa fa-angle-right"></i> Your Cases</h3>
-{% for i in divcases %}
-              <h1><a href="/lawyered/divorce/{{i.id}}/">{{i.casetype}}</h1>
-              <h1>{{i.id}}<h1>
+{% for case in divcases %}
+              <h1><a href="/lawyered/divorce/{{case.id}}/">{{case.casetype}}</h1>
+              <h1>{{case.id}}
             {% endfor %}
-{% for j in precases %}
-              <h1><a href="/lawyered/prenup/{{j.id}}/">{{j.casetype}}</h1>
-              <h1>{{j.id}}</h1>
+{% for case in precases %}
+              <h1><a href="/lawyered/prenup/{{case.id}}/">{{case.casetype}}</h1>
+              <h1>{{case.id}}
               
             {% endfor %}
-{% for k in cricases %}
-              <h1><a href="/lawyered/criminal/{{k.id}}/">{{k.casetype}}</h1>
-              <h1>{{k.id}}</h1>
+{% for case in cricases %}
+              <h1><a href="/lawyered/criminal/{{case.id}}/">{{case.casetype}}</h1>
+              <h1>{{case.id}}
               
             {% endfor %}
 {% for case in mercases %}
               <h1><a href="/lawyered/merger/{{case.id}}/">{{case.casetype}}</h1>
-              <h1>{{case.id}}</h1>
+              <h1>{{case.id}}
               
             {% endfor %}
-{% for l in estcases %}
-              <h1><a href="/lawyered/estate/{{l.id}}/">{{l.casetype}}</h1>
-              <h1>{{l.id}}</h1>
+{% for case in estcases %}
+              <h1><a href="/lawyered/estate/{{case.id}}/">{{case.casetype}}</h1>
+              <h1>{{case.id}}
             {% endfor %}
-{% for m in duicases %}
-              <h1><a href="/lawyered/dui/{{m.id}}/">{{m.casetype}}</h1>
-              <h1>{{m.id}}</h1>
+{% for case in duicases %}
+              <h1><a href="/lawyered/dui/{{case.id}}/">{{case.casetype}}</h1>
+              <h1>{{case.id}}
             {% endfor %}
 
               <div class="row mt">

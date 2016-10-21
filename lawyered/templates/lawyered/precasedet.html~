@@ -55,7 +55,7 @@
               	  <h5 class="centered">{{ username }}</h5>
               	  	
                   <li class="mt">
-                      <a class="active" href="{% url 'lawyered:dashboard' %}">
+                      <a  href="{% url 'lawyered:dashboard' %}">
                           <i class="fa fa-dashboard"></i>
                           <span>Dashboard</span>
                       </a>
@@ -68,7 +68,7 @@
                       </a>
                   </li>
 				  
-				  <li class="mt">
+				  <li class="active" class="mt">
                        <a href="{% url 'lawyered:add_cases' %}">
 						  <i class="fa fa-tasks"></i>
                           <span>Add a new Case</span>
@@ -87,7 +87,8 @@
       <section id="main-content">
           <section class="wrapper site-min-height">
 			
-          <h1>your case is successfully submitted!!</h1>
+          <h1>{{case.name}}</h1>
+          <h2>{{case.budget}}</h2>
       </section>
 
       <!--main content end-->
@@ -173,3 +174,4 @@
 
   </body>
 </html>
+

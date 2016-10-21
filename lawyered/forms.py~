@@ -114,7 +114,7 @@ class duiCaseForm(forms.ModelForm):
 	reason = forms.MultipleChoiceField(widget = forms.CheckboxSelectMultiple, choices = REASONS, label = 'Why were you pulled Over? (Select all that apply)')
     	past = forms.ChoiceField(widget = forms.RadioSelect, choices = CHOICES3, label = 'Have you had a DUI in the past?')
     	next_date = forms.DateField(initial = datetime.date.today, label = 'When is your next court date?')
-    	#budget = forms.DecimalField(label='What is your estimated budget?',max_digits=6, decimal_places=2)
+    	budget = forms.DecimalField(label='What is your estimated budget?',max_digits=6, decimal_places=2)
     	details = forms.CharField(label = 'Further Details')
 
     	class Meta:
@@ -133,7 +133,7 @@ class criminalCaseForm(forms.ModelForm):
     	court_past = forms.ChoiceField(widget = forms.RadioSelect, label = 'Have you already been to court for this matter?', choices = CHOICES3)
     	next_date = forms.DateField(initial = datetime.date.today, label = 'When is your next court date?')
     	worked = forms.ChoiceField(widget = forms.RadioSelect ,label = 'Have you previously worked with a lawyer on this matter?', choices = CHOICES3)
-    	#budget = forms.DecimalField(label='What is your estimated budget?',max_digits=6, decimal_places=2)
+    	budget = forms.DecimalField(label='What is your estimated budget?',max_digits=6, decimal_places=2)
     	details = forms.CharField(label = 'Further Details')
 
     	class Meta:
@@ -152,7 +152,7 @@ class prenupCaseForm(forms.ModelForm):
     	assets_exclude = forms.ChoiceField(widget = forms.RadioSelect, choices = CHOICES1, 
         label = 'Are there any assets that you or your partner would like to exclude from the pre-nuptial agreement?')
     	exclude_details = forms.CharField(label = 'If yes, Please explain')
-    	#budget = forms.DecimalField(label='What is your estimated budget?',max_digits=6, decimal_places=2)
+    	budget = forms.DecimalField(label='What is your estimated budget?',max_digits=6, decimal_places=2)
 	
 	class Meta:
 		model = prenupForm
@@ -167,7 +167,7 @@ class mergerCaseForm(forms.ModelForm):
     	names = forms.CharField(label  = 'What are the names of all the parties involved in the transaction?')
     	circumstances = forms.CharField(label = 'Describe the circumstances of the sale or merger in as much details as possible:')
     	need = forms.CharField(label = 'What do you need a lawyer to help with?')
-    	#budget = forms.DecimalField(label='What is your estimated budget?',max_digits=6, decimal_places=2)
+    	budget = forms.DecimalField(label='What is your estimated budget?',max_digits=6, decimal_places=2)
 
     	class Meta:
     		model = mergerForm
@@ -180,7 +180,7 @@ class estateCaseForm(forms.ModelForm):
     	property_type = forms.ChoiceField(widget = forms.RadioSelect, choices = CHOICES8, label = 'What type of property is involved?')
     	details = forms.CharField(label= 'Describe your legal issues in as much details as possible:')
     	need = forms.CharField(label = 'What do you need a lawyer to help with?')
-    	#budget = forms.DecimalField(label='What is your estimated budget?',max_digits=6, decimal_places=2)
+    	budget = forms.DecimalField(label='What is your estimated budget?',max_digits=6, decimal_places=2)
 
 	class Meta:
 		model = estateForm

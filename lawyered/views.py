@@ -84,10 +84,16 @@ def register(request):
 @login_required
 def dashboard(request):
 	username = request.user.username
-	cases = divorceForm.objects.filter(name__contains = username)
-	return render(request, 'lawyered/dashboard.html', {'username': username, 'cases':cases})
+	divcases = divorceForm.objects.filter(name__contains = username)
+	duicases = duiForm.objects.filter(name__contains = username)
+	cricases = criminalForm.objects.filter(name__contains = username)
+	precases = prenupForm.objects.filter(name__contains = username)
+	mercases = mergerForm.objects.filter(name__contains = username)
+	estcases = estateForm.objects.filter(name__contains = username)
+	# Add a piece of code for all forms
+	return render(request, 'lawyered/dashboard.html', {'username': username, 'divcases':divcases, 'duicases':duicases, 'cricases' : cricases,'mercases': mercases, 'precases' : precases, 'estcases' : estcases })
 
-
+#Now get all lawyer objects
 def person_list(request):
 	persons = person.objects.all()
 	query = request.GET.get("q")
@@ -463,12 +469,55 @@ def thumb(request, user_id, question_id, op_code):
 
     return render(request, 'lawyered/detail.html', {'question': question, 'answers': answers})
 
-
+def form_list(request):
+	return render(request, 'lawyered/add_cases.html')
+	
 def divorce(request):
 	if request.method== 'POST':
 	#	user_id = request.POST.get('user')
 	#	user_ob = User.objects.get(id=user_id)
 		form = divorcecaseForm(request.POST)
+	#	user = UserProfile.objects.get(user=user_ob)
+
+		if form.is_valid():
+			
+			new_case1 = form1.save(commit=False)
+	#		new_case.name = user
+			new_case.save()
+			return render(request,'lawyered/done.html', {'username':request.user.username})
+		else:
+			return render(request, 'lawyered/invalid.html')
+
+	else:
+		form = divorcecaseForm()
+		return render(request, 'lawyered/divorce.html', {'form': form, 'username':request.user.username})
+		
+def dui(request):
+	if request.method== 'POST':
+	#	user_id = request.POST.get('user')
+	#	user_ob = User.objects.get(id=user_id)
+		form = duiCaseForm(request.POST)
+	#	user = UserProfile.objects.get(user=user_ob)
+
+		if form.is_valid():
+			
+			new_case = form.save(commit=False)
+	#		new_case.name = user
+			new_case.save()
+			return render(request,'lawyered/done.html', {'username':request.user.username})
+		else:
+			print form.errors
+			return render(request, 'lawyered/invalid.html')
+
+	else:
+		form = duiCaseForm()
+		return render(request, 'lawyered/dui.html', {'form': form, 'username':request.user.username})
+		
+def criminal(request):
+	if request.method== 'POST':
+	#	user_id = request.POST.get('user')
+	#	user_ob = User.objects.get(id=user_id)
+		form = criminalCaseForm(request.POST)
 	#	user = UserProfile.objects.get(user=user_ob)
 
 		if form.is_valid():
@@ -481,15 +530,99 @@ def divorce(request):
 			return render(request, 'lawyered/invalid.html')
 
 	else:
-		form = divorcecaseForm()
-		return render(request, 'lawyered/divorce.html', {'form': form, 'username':request.user.username})
+		form = criminalCaseForm()
+		return render(request, 'lawyered/criminal.html', {'form': form, 'username':request.user.username})
+		
+def prenup(request):
+	if request.method== 'POST':
+	#	user_id = request.POST.get('user')
+	#	user_ob = User.objects.get(id=user_id)
+		form = prenupCaseForm(request.POST)
+	#	user = UserProfile.objects.get(user=user_ob)
+
+		if form.is_valid():
+			
+			new_case = form.save(commit=False)
+	#		new_case.name = user
+			new_case.save()
+			return render(request,'lawyered/done.html', {'username':request.user.username})
+		else:
+			return render(request, 'lawyered/invalid.html')
+
+	else:
+		form = prenupCaseForm()
+		return render(request, 'lawyered/prenup.html', {'form': form, 'username':request.user.username})
+		
+def merger(request):
+	if request.method== 'POST':
+	#	user_id = request.POST.get('user')
+	#	user_ob = User.objects.get(id=user_id)
+		form = mergerCaseForm(request.POST)
+	#	user = UserProfile.objects.get(user=user_ob)
+
+		if form.is_valid():
+			
+			new_case = form.save(commit=False)
+	#		new_case.name = user
+			new_case.save()
+			return render(request,'lawyered/done.html', {'username':request.user.username})
+		else:
+			return render(request, 'lawyered/invalid.html')
+
+	else:
+		form = mergerCaseForm()
+		return render(request, 'lawyered/merger.html', {'form': form, 'username':request.user.username})
+		
+def estate(request):
+	if request.method== 'POST':
+	#	user_id = request.POST.get('user')
+	#	user_ob = User.objects.get(id=user_id)
+		form = estateCaseForm(request.POST)
+	#	user = UserProfile.objects.get(user=user_ob)
+
+		if form.is_valid():
+			
+			new_case = form.save(commit=False)
+	#		new_case.name = user
+			new_case.save()
+			return render(request,'lawyered/done.html', {'username':request.user.username})
+		else:
+			return render(request, 'lawyered/invalid.html')
+
+	else:
+		form = estateCaseForm()
+		return render(request, 'lawyered/estate.html', {'form': form, 'username':request.user.username})
+		
+		
+
 	
 def forumlogout(request):
     logout(request)
     return HttpResponseRedirect('/lawyered/forum')
 
 
-def casedetail(request, divorceForm_id):
-  	case = divorceForm.objects.get(pk=divorceForm_id)
+def divcasedetail(request, divorceForm_id):
+  	dcase = divorceForm.objects.get(pk=divorceForm_id)
+	return render(request, 'lawyered/divcasedet.html', {'dcase':dcase,'username':request.user.username})
+	
+def precasedetail(request, prenupForm_id):
+  	pcase = prenupForm.objects.get(pk=prenupForm_id)
+	return render(request, 'lawyered/precasedet.html', {'pcase':pcase,'username':request.user.username})
+	
+def cricasedetail(request, criminalForm_id):
+  	ccase = criminalForm.objects.get(pk=criminalForm_id)
+	return render(request, 'lawyered/cricasedet.html', {'ccase':ccase,'username':request.user.username})
+	
+def mercasedetail(request, mergerForm_id):
+  	mcase = mergerForm.objects.get(pk=mergerForm_id)
+	return render(request, 'lawyered/mercasedet.html', {'mcase':mcase,'username':request.user.username})
+	
+def estcasedetail(request, estateForm_id):
+  	ecase = estateForm.objects.get(pk=estateForm_id)
+	return render(request, 'lawyered/estcasedet.html', {'ecase':ecase,'username':request.user.username})
 
-  	return render(request, 'lawyered/casedet.html', {'case':case})
+def duicasedetail(request, duiForm_id):
+  	ducase = duiForm.objects.get(pk=duiForm_id)
+	return render(request, 'lawyered/duicasedet.html', {'ducase': ducase,'username':request.user.username})
+	
+	
