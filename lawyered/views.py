@@ -481,9 +481,9 @@ def divorce(request):
 
         if form.is_valid():
             
-            new_case1 = form1.save(commit=False)
+            new_case1 = form.save(commit=False)
     #       new_case.name = user
-            new_case.save()
+            new_case1.save()
             return render(request,'lawyered/done.html', {'username':request.user.username})
         else:
             return render(request, 'lawyered/invalid.html')

@@ -87,7 +87,7 @@
       <section id="main-content">
           <section class="wrapper site-min-height">
 			<h3><i class="fa fa-angle-right"></i> Your Cases</h3>
-{% for i in divcases %}
+<!-- {% for i in divcases %}
               <h1><a href="/lawyered/divorce/{{i.id}}/">{{i.casetype}}</h1>
               <h1>{{i.id}}<h1>
             {% endfor %}
@@ -113,54 +113,91 @@
 {% for m in duicases %}
               <h1><a href="/lawyered/dui/{{m.id}}/">{{m.casetype}}</h1>
               <h1>{{m.id}}</h1>
-            {% endfor %}
+            {% endfor %} -->
 
               <div class="row mt">
           		<div class="col-lg-12">
           		
 					<!-- 1st ROW OF PANELS -->
+          
 					<div class="row">
+            {% for k in cricases %}
 						<div class="col-lg-4 col-md-4 col-sm-4 mb">
 							<div class="product-panel-2 pn">
 								<img src="{%static 'lawyered/assets/img/crime.jpg' %}" width="150" alt=" ">
-								<h5 class="mt">Murder</h5>
-								<h6>Lawyer Approval Pending</h6>
+								<h5 class="mt">Criminal</h5>
+								<a href="/lawyered/criminal/{{k.id}}/">
 								<button class="btn btn-small btn-theme04">FULL REPORT</button>
+                </a>
 							</div>
-						</div><!--/col-md-4 -->
+						</div>
+            {% endfor %}<!--/col-md-4 -->
 					
+            {% for i in divcases %}
 						<div class="col-lg-4 col-md-4 col-sm-4 mb">
 							<div class="product-panel-2 pn">
 								<img src="{%static 'lawyered/assets/img/family.jpg' %}" width="150" alt=" ">
 								<h5 class="mt">Divorce</h5>
-								<h6>Appointment-3/10/2016</h6>
+                <a href="/lawyered/divorce/{{i.id}}/">
 								<button class="btn btn-small btn-theme04">FULL REPORT</button>
+                </a>
 							</div>
-						</div><!--/col-md-4 -->
+						</div>
+            {% endfor %}<!--/col-md-4 -->
 					
-					</div><!--/END 1ST ROW OF PANELS -->
+					<!-- </div><!--/END 1ST ROW OF PANELS -->
 					
 					<!-- 2ND ROW OF PANELS -->
-					<div class="row">
-            {% for i in divcases %}
+					<!-- <div class="row"> -->
+
+            {% for j in precases %}
 						<div class="col-lg-4 col-md-4 col-sm-4 mb">
 							<div class="product-panel-2 pn">
 								<img src="{%static 'lawyered/assets/img/Document.jpg' %}" width="150" alt=" ">
-								<h5 class="mt">Murder</h5>
-								<h6>Lawyer Approval Pending</h6>
+								<h5 class="mt">Pre-Nuptial Agreement</h5>
+                <a href="/lawyered/prenup/{{j.id}}/">
 								<button class="btn btn-small btn-theme04">FULL REPORT</button>
+                </a>
 							</div>
-						</div><!--/col-md-4 -->
+						</div>
+            {% endfor %}<!--/col-md-4 -->
 						
+            {% for m in duicases %}
 						<div class="col-lg-4 col-md-4 col-sm-4 mb">
 							<div class="product-panel-2 pn">
 								<img src="{%static 'lawyered/assets/img/theft.jpg' %}" width="150" alt=" ">
-								<h5 class="mt">Murder</h5>
-								<h6>Lawyer Approval Pending</h6>
+								<h5 class="mt">DUI</h5>
+								<a href="/lawyered/dui/{{m.id}}/">
 								<button class="btn btn-small btn-theme04">FULL REPORT</button>
+                </a>
 							</div>
-						</div><!--/col-md-4 -->
+						</div>
+            {% endfor %}<!--/col-md-4 -->
 						
+            {% for case in mercases %}
+            <div class="col-lg-4 col-md-4 col-sm-4 mb">
+              <div class="product-panel-2 pn">
+                <img src="{%static 'lawyered/assets/img/theft.jpg' %}" width="150" alt=" ">
+                <h5 class="mt">Merger & Acquisition</h5>
+                <a href="/lawyered/merger/{{case.id}}/">
+                <button class="btn btn-small btn-theme04">FULL REPORT</button>
+                </a>
+              </div>
+            </div>
+            {% endfor %}
+
+            {% for l in estcases %}
+            <div class="col-lg-4 col-md-4 col-sm-4 mb">
+              <div class="product-panel-2 pn">
+                <img src="{%static 'lawyered/assets/img/theft.jpg' %}" width="150" alt=" ">
+                <h5 class="mt">Estate</h5>
+                <a href="/lawyered/estate/{{l.id}}/">
+                <button class="btn btn-small btn-theme04">FULL REPORT</button>
+                </a>
+              </div>
+            </div>
+            {% endfor %}
+
             		 </div><!--/row -->
             	</div>
             </div>
