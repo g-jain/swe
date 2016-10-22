@@ -48,8 +48,6 @@ ASSETS = (
     ('personal_property','Personal property (jewelry, cars, furniture, appliances, etc.) '),
     ('others','Others'),
     )
-    
-
 TESTS = ( 
     ('Breathalyzer','breathalyzer'),
     ('Balance and coordination tests','balance and coordination tests'),
@@ -81,8 +79,7 @@ CHOICES7 = (('1','Buying an estate'),('2','Selling an estate'))
 CHOICES8 = (('1','Condominium'),('2','Single family home'),('3','Multi-family complex'),
     ('4','Office building'),('5','Shopping center'),('6','Land'),('7','Industrial'),('8','Other'))
 
-class divorcecaseForm(forms.ModelForm):
-    
+class divorcecaseForm(forms.ModelForm):    
     gender = forms.ChoiceField(widget=forms.RadioSelect, choices=CHOICES2, label = 'Gender of your spouse?')
     mutual = forms.ChoiceField(widget=forms.RadioSelect, choices=CHOICES1, label = 'Was a pre-nuptial agreement in place at the time of marriage?')
     assets = forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple,choices=ASSETS, label = 'What Assets did spouse have before marriage? (Select All that Apply)')

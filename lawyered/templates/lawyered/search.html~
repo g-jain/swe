@@ -344,7 +344,7 @@ kbd {
       </ul>
       <h2 class="profile__name">Bart Veneman</h2>
       <ul class="social">
-        <li><a href="#"><i class="fa fa-github"></i></a></li>
+        <li><a href="#"><i class="fa fa-github"></i></a></li><!--
         --><li class="location"><i class="fa fa-map-marker"></i><span>Ommen, NL</span></li>
       </ul>
     </section>
