@@ -1,14 +1,14 @@
 
-from django.contrib.auth import authenticate, login, logout
-from .forms import LoginForm, UserRegistrationForm
-from django.contrib.auth.decorators import login_required
-from . import views
-from django.contrib.auth.views import logout
-from django.conf.urls import  include, url
-from django.contrib import admin
-from django.contrib.auth.models import User
-from .models import Question, Tag
-from rest_framework import routers, serializers, viewsets
+# from django.contrib.auth import authenticate, login, logout
+# from .forms import LoginForm, UserRegistrationForm
+# from django.contrib.auth.decorators import login_required
+# from . import views
+# from django.contrib.auth.views import logout
+# from django.conf.urls import  include, url
+# from django.contrib import admin
+# from django.contrib.auth.models import User
+# from .models import Question, Tag
+# from rest_framework import routers, serializers, viewsets
 
 # Serializers define the API representation.
 class UserSerializer(serializers.HyperlinkedModelSerializer):
