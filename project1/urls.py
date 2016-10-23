@@ -40,7 +40,7 @@ router.register(r'api/questions', QuestionViewSet)
 
 urlpatterns = [
     # Examples:
-    # url(r'^$', 'project1.views.home', name='home'),
+    url(r'^$', 'project1.views.home', name='home'),
     url(r'^lawyered/', include('lawyered.urls')),
 #    url(r'^ath/', include('laath.urls')),
 	url(r'^login/$', views.forumlogin, name='forumlogin'),
