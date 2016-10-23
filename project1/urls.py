@@ -1,12 +1,14 @@
-from django.conf.urls import include, url
+
+from django.contrib.auth import authenticate, login, logout
+from .forms import LoginForm, UserRegistrationForm
+from django.contrib.auth.decorators import login_required
+from . import views
+from django.contrib.auth.views import logout
+from django.conf.urls import  include, url
 from django.contrib import admin
-from django.contrib.auth import views
-from django.conf import settings
-from django.conf.urls.static import static
-from lawyered import views
-from lawyered.models import Question, Tag
-from rest_framework import routers, serializers, viewsets
 from django.contrib.auth.models import User
+from .models import Question, Tag
+from rest_framework import routers, serializers, viewsets
 
 # Serializers define the API representation.
 class UserSerializer(serializers.HyperlinkedModelSerializer):
@@ -38,35 +40,48 @@ router = routers.DefaultRouter()
 router.register(r'api/users', UserViewSet)
 router.register(r'api/questions', QuestionViewSet)
 
+app_name = 'lawyered'
 urlpatterns = [
-    # Examples:
-    url(r'^$', 'project1.views.home', name='home'),
-    url(r'^lawyered/', include('lawyered.urls')),
-#    url(r'^ath/', include('laath.urls')),
-	url(r'^login/$', views.forumlogin, name='forumlogin'),
-    url(r'^admin/', include(admin.site.urls)),
-#    url(r'^forum/', include('pybb.urls', namespace='pybb')),
-	url(r'^forum$', views.forum, name='forum'),
-	url(r'^q/(?P<question_id>\d+)/$', views.detail, name='detail'),
-    url(r'^answer/(?P<question_id>\d+)/$', views.answer, name='answer'),
-    url(r'^add/$', views.add, name='add'),
-    url(r'^answer/$', views.add_answer, name='add_answer'),
-    url(r'^vote/(?P<user_id>\d+)/(?P<answer_id>\d+)/(?P<question_id>\d+)/(?P<op_code>\d+)/$', views.vote, name='vote'),
-    url(r'^comment/(?P<answer_id>\d+)/$', views.comment, name='comment'),
-    url(r'^search/$', views.search_question, name='search_question'),
-    url(r'^tag/(?P<tag>\w+)/$', views.tag, name='tag'),
-    url(r'^thumb/(?P<user_id>\d+)/(?P<question_id>\d+)/(?P<op_code>\d+)/$', views.thumb, name='thumb'),
 
-    url(r'^profile/(?P<user_id>\d+)/$', views.profile, name='profile'),
+    url(r'^$',project1.views.index, name='index'),
+    url(r'^$', views.index, name='index'),
+#    url(r'^login/$', views.login, {'template_name' : 'login.html'}),
+    url(r'^login/$', views.login_view, name='login'),
+    url(r'^login/$',login, name = 'login'),
+    url(r'^logout/$',logout, {'next_page': '/lawyered'}, name='logout'),
     url(r'^register/$', views.register, name='register'),
-    
+    url(r'^dashboard/$',views.dashboard,name='dashboard'),
+    url(r'^search/$', views.person_list, name='search'),
+    url(r'^add_cases/$', views.form_list, name='add_cases'),
+    url(r'^divorce/$', views.divorce, name='divorce'),
+    url(r'^dui/$', views.dui, name='dui'),
+    url(r'^prenup/$', views.prenup, name='prenup'),
+    url(r'^merger/$', views.merger, name='merger'),
+    url(r'^criminal/$', views.criminal, name='criminal'),
+    url(r'^estate/$', views.estate, name='estate'),
+    url(r'^forum/$', views.forum, name='forum'),
+    url(r'^forum/logout$', views.forumlogout, name='forumlogout'),
+    url(r'^forum/login$', views.forumlogin, name='forumlogin'),
+    url(r'^forum/q/(?P<question_id>\d+)/$', views.detail, name='detail'),
+    url(r'^forum/answer/(?P<question_id>\d+)/$', views.answer, name='answer'),
+    url(r'^forum/add/$', views.add, name='add'),
+    url(r'^forum/answer/$', views.add_answer, name='add_answer'),
+    url(r'^forum/vote/(?P<user_id>\d+)/(?P<answer_id>\d+)/(?P<question_id>\d+)/(?P<op_code>\d+)/$', views.vote, name='vote'),
+    url(r'^forum/comment/(?P<answer_id>\d+)/$', views.comment, name='comment'),
+    url(r'^forum/search_question/$', views.search_question, name='search_question'),
+    url(r'^forum/tag/(?P<tag>\w+)/$', views.tag, name='tag'),
+    url(r'^forum/thumb/(?P<user_id>\d+)/(?P<question_id>\d+)/(?P<op_code>\d+)/$', views.thumb, name='thumb'),
+    url(r'^profile/(?P<user_id>\d+)/$', views.profile, name='profile'),
     url('^markdown/', include( 'django_markdown.urls')),
-
     url(r'^', include(router.urls)),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-
-    #url('^forgot/', include('password_reset.urls')),
+    url(r'^divorce/(?P<divorceForm_id>\d+)/$', views.divcasedetail, name='divcasedetail'),
+    url(r'^prenup/(?P<prenupForm_id>\d+)/$', views.precasedetail, name='precasedetail'),
+    url(r'^criminal/(?P<criminalForm_id>\d+)/$', views.cricasedetail, name='cricasedetail'),
+    url(r'^merger/(?P<mergerForm_id>\d+)/$', views.mercasedetail, name='mercasedetail'),
+    url(r'^estate/(?P<estateForm_id>\d+)/$', views.estcasedetail, name='estcasedetail'),
+    url(r'^dui/(?P<duiForm_id>\d+)/$', views.duicasedetail, name='duicasedetail'),
 
 ]
-if settings.DEBUG:
-	urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
+#url(r'^$', views.dashboard, name='dashboard'),url(r'^logout-then-login/$','django.contrib.auth.views.logout_then_login',name='logout_then_login'),url(r'^login/$', views.user_login,name='login'),
+    
