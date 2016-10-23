@@ -10,35 +10,35 @@
 # from .models import Question, Tag
 # from rest_framework import routers, serializers, viewsets
 
-# Serializers define the API representation.
-class UserSerializer(serializers.HyperlinkedModelSerializer):
-    class Meta:
-        model = User
-        fields = ('url', 'username', 'email', 'is_staff')
+# # Serializers define the API representation.
+# class UserSerializer(serializers.HyperlinkedModelSerializer):
+#     class Meta:
+#         model = User
+#         fields = ('url', 'username', 'email', 'is_staff')
 
-class QuestionSerializer(serializers.HyperlinkedModelSerializer):
-    tags = serializers.SlugRelatedField(
-        many=True,
-        read_only=True,
-        slug_field='slug'
-     )
-    class Meta:
-        model = Question
-        fields = ('id', 'pub_date', 'question_text', 'tags', 'views')
+# class QuestionSerializer(serializers.HyperlinkedModelSerializer):
+#     tags = serializers.SlugRelatedField(
+#         many=True,
+#         read_only=True,
+#         slug_field='slug'
+#      )
+#     class Meta:
+#         model = Question
+#         fields = ('id', 'pub_date', 'question_text', 'tags', 'views')
 
-# ViewSets define the view behavior.
-class UserViewSet(viewsets.ModelViewSet):
-    queryset = User.objects.all()
-    serializer_class = UserSerializer
+# # ViewSets define the view behavior.
+# class UserViewSet(viewsets.ModelViewSet):
+#     queryset = User.objects.all()
+#     serializer_class = UserSerializer
 
-class QuestionViewSet(viewsets.ModelViewSet):
-    queryset = Question.objects.all()
-    serializer_class = QuestionSerializer
+# class QuestionViewSet(viewsets.ModelViewSet):
+#     queryset = Question.objects.all()
+#     serializer_class = QuestionSerializer
 
-# Routers provide an easy way of automatically determining the URL conf.
-router = routers.DefaultRouter()
-router.register(r'api/users', UserViewSet)
-router.register(r'api/questions', QuestionViewSet)
+# # Routers provide an easy way of automatically determining the URL conf.
+# router = routers.DefaultRouter()
+# router.register(r'api/users', UserViewSet)
+# router.register(r'api/questions', QuestionViewSet)
 
 app_name = 'lawyered'
 urlpatterns = [
