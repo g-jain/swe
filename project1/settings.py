@@ -82,22 +82,23 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'project1.wsgi.application'
 
+DATABASES['default'] =  dj_database_url.config()
 
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-	    'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'lawyered',
-        'USER': 'lawyer',
-        'PASSWORD': 'password',
-        'HOST': 'localhost',
-        'PORT': '',
-        #'ENGINE': 'django.db.backends.sqlite3',
-        #'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
+# DATABASES = {
+#     'default': {
+# 	    'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'lawyered',
+#         'USER': 'lawyer',
+#         'PASSWORD': 'password',
+#         'HOST': 'localhost',
+#         'PORT': '',
+#         #'ENGINE': 'django.db.backends.sqlite3',
+#         #'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
 
 
 REST_FRAMEWORK = {
@@ -139,7 +140,5 @@ LOGIN_REDIRECT_URL = 'lawyered/dashboard'
 
 MEDIA_URL = '/home/project1/lawyered/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
-
-#DATABASES['default'] =  dj_database_url.config()
 
 # DJANGO_SETTINGS_MODULE  website.settings
