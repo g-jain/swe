@@ -27,6 +27,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+import dj_database_url
+# db_from_env = dj_database_url.config(conn_max_age=500)
+# DATABASES['default'].update(db_from_env)
 
 # Application definition
 
@@ -85,7 +88,7 @@ WSGI_APPLICATION = 'project1.wsgi.application'
 
 DATABASES = {
     'default': {
-	'ENGINE': 'django.db.backends.postgresql_psycopg2',
+	    'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'lawyered',
         'USER': 'lawyer',
         'PASSWORD': 'password',
@@ -123,6 +126,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
+
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
 #redirection
 LOGIN_REDIRECT_URL = 'lawyered/dashboard'
@@ -131,3 +140,6 @@ LOGIN_REDIRECT_URL = 'lawyered/dashboard'
 MEDIA_URL = '/home/project1/lawyered/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
+#DATABASES['default'] =  dj_database_url.config()
+
+# DJANGO_SETTINGS_MODULE  website.settings

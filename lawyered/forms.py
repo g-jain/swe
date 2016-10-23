@@ -39,45 +39,46 @@ class UserProfileForm(forms.ModelForm):
 class SearchForm(forms.Form):
     query = forms.CharField()
 ASSETS = (
-    ('residential_property', 'Residential Property'),
-    ('investment_property', 'Investmant Property'),
-    ('investment_account', ' Investment Account(s) (stocks, bonds, mutual funds, etc.) '),
-    ('bank_account','Bank Account(s)'),
-    ('pension', 'pension, or other retirement plan'),
-    ('business','Business interest(s)'),
-    ('personal_property','Personal property (jewelry, cars, furniture, appliances, etc.) '),
-    ('others','Others'),
+    ('Residential Property', 'Residential Property'),
+    ('Investmant Property', 'Investmant Property'),
+    ('Investment Account(s) (Stocks, Bonds, Mutual Funds, etc.)', 'Investment Account(s) (Stocks, Bonds, Mutual Funds, etc.)'),
+    ('Bank Account(s)','Bank Account(s)'),
+    ('Pension, Or Other Retirement Plans', 'Pension, Or Other Retirement Plans'),
+    ('Business Interest(s)','Business Interest(s)'),
+    ('Personal Property (Jewellery, Cars, Furniture, Appliances, etc.)','Personal Property (Jewellery, Cars, Furniture, Appliances, etc.)'),
+    ('Others','Others'),
     )
 TESTS = ( 
-    ('Breathalyzer','breathalyzer'),
-    ('Balance and coordination tests','balance and coordination tests'),
-    ('Eye movement test (pen test)','eye movement test (pen test)'),
-    ('Blood test','blood test'),
+    ('Breathalyzer','Breathalyzer'),
+    ('Balance And Cordination Tests','Balance And Coordination Tests'),
+    ('Eye Movement Test (Pen Test)','Eye Movement Test (Pen Test)'),
+    ('Blood Test','Blood Test'),
     ('Other','Other'),
     )
 
 REASONS = (
-    ('speeding','Speeding'),('swerving','Swerving'), ('illegal_maneuver','Illegal maneuver'),
-    ('Reckless_driving','Reckless driving'), ('equipment_violations','Equipment violation (missing headlight, excessive window tinting, etc.)'),
-    ('DUI_checkpoint','DUI checkpoint'), ('other','Other'),
+    ('Speeding','Speeding'),('Swerving','Swerving'), ('Illegal Maneuver','Illegal Maneuver'),
+    ('Reckless Driving','Reckless Driving'), ('Equipment Violation (Missing Headlight, Excessive Window Tinting, etc.)','Equipment Violation (Missing Headlight, Excessive Window Tinting, etc.)'),
+    ('DUI Checkpoint','DUI Checkpoint'), ('Other','Other'),
     )
 
 SITUATION = (
-    ('questioned','I was questioned'),
-    ('detained','I was detained'),
-    ('arrested','I was arrested'),
-    ('charged','I was formally charged with a crime')
+    ('I Was Questioned','I Was Questioned'),
+    ('I Was Detained','I Was Detained'),
+    ('I Was Arrested','I Was Arrested'),
+    ('I Was Formally Charged With A Crime','I Was Formally Charged With A Crime')
     )
 
-CHOICES1 = (('1', 'Yes',), ('2', 'No',),('3','Not Sure',))
-CHOICES2 = (('1', 'Male',), ('2', 'Female',))
-CHOICES3 = (('1', 'Yes',), ('2', 'No',))
-CHOICES4 = (('1','Morning'),('2','Afternoon'),('3','Evening'),('4','Late Night'))
-CHOICES5 = (('1','No'),('2','Yes, I do'),('3','Yes, my partner does'),('4','Yes, we both do'),('5','I\'m not sure'))
-CHOICES6 = (('1','Buying a business'),('2','Selling a business'),('3','Merging with another company'))
-CHOICES7 = (('1','Buying an estate'),('2','Selling an estate'))
-CHOICES8 = (('1','Condominium'),('2','Single family home'),('3','Multi-family complex'),
-    ('4','Office building'),('5','Shopping center'),('6','Land'),('7','Industrial'),('8','Other'))
+CHOICES1 = (('Yes', 'Yes',), ('No', 'No',),('Not Sure','Not Sure',))
+CHOICES2 = (('Male', 'Male',), ('Female', 'Female',))
+CHOICES3 = (('Yes', 'Yes',), ('No', 'No',))
+CHOICES4 = (('Morning','Morning'),('Afternoon','Afternoon'),('Evening','Evening'),('Late Night','Late Night'))
+CHOICES5 = (('No','No'),('Yes, I Do','Yes, I Do'),('Yes, My Partner Does','Yes, My Partner Does'),
+    ('Yes, We Both Do','Yes, We Both Do'),('I\'m Not Sure','I\'m Not Sure'))
+CHOICES6 = (('Buying A Business','Buying A Business'),('Selling A Business','Selling A Business'),('Merging With Another Company','Merging With Another Company'))
+CHOICES7 = (('Buying an Estate','Buying An Estate'),('Selling An Estate','Selling An Estate'))
+CHOICES8 = (('Condominium','Condominium'),('Single Family Home','Single Family Home'),('Multi-Family Complex','Multi-Family Complex'),
+    ('Office Building','Office Building'),('Shopping Center','Shopping Center'),('Land','Land'),('Industrial','Industrial'),('Other','Other'))
 
 class divorcecaseForm(forms.ModelForm):    
     gender = forms.ChoiceField(widget=forms.RadioSelect, choices=CHOICES2, label = 'Gender of your spouse?')

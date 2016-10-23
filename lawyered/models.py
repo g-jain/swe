@@ -13,7 +13,7 @@ class person(models.Model):
 	details = models.TextField()
 	image = models.ImageField(upload_to='lawyered/media/',blank=True)
 	def __str__(self):
-		return self.title	
+		return self.name	
 
 #userprofile
 class UserProfile(models.Model):
@@ -144,6 +144,7 @@ class mergerForm(models.Model):
 	need = models.CharField(max_length=250)
 	budget = models.CharField(max_length=250)
 	casetype = models.CharField(max_length=250, default="Merger")
+
 class estateForm(models.Model):
 	name = models.CharField(max_length=250)
 	types = models.CharField(max_length=250)
@@ -152,4 +153,3 @@ class estateForm(models.Model):
 	need = models.CharField(max_length=250)
 	budget = models.CharField(max_length=250)
 	casetype = models.CharField(max_length=250, default="Estate")
-

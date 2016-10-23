@@ -4,7 +4,7 @@
 <html>
 
 <head>
-<title>home</title>
+<title>Lawyered</title>
 <meta charset="utf-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -30,6 +30,7 @@
       <span class="user">
         <li><a href="#"><i class="fa fa-lg fa-home"></i></a></li>
         {% if request.user.is_authenticated %}
+        <li><a href="{% url "lawyered:dashboard" %}">Dashboard</a></li>
 		<li><a href="{% url "lawyered:logout" %}">Logout</a></li>
 		{% else %}
 		<li><a href="{% url "lawyered:login" %}">Login</a></li>
@@ -71,7 +72,7 @@
       <ul class="slides">
         <li>
           <article>
-            <h3 class="heading">Find A Lawyer or Ask for Free. Now!</h3>
+            <h3 class="heading">Find A Lawyer or Ask for Free.</h3>
             <p>Easiest way to get legal help</p>
             <footer>
               <ul class="nospace inline pushright">
@@ -168,7 +169,7 @@
                 <li>in <a href="#">Category Name</a></li>-->
                 <li>Tax Lawyer</li>
               </ul>
-              <p>A highly acclaimed lawyer who has managed fame in a few years by helping clients resolve their tax issues and also evade tax</p>
+              <p>A highly acclaimed lawyer who has managed fame in a few years by helping clients resolve their tax issues.</p>
               <footer><a href="#">Read More &raquo;</a></footer>
             </div>
           </article>

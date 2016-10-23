@@ -18,14 +18,15 @@ File: Flexslider Configuration Settings
 
 // Homepage Slider
 $('.basicslider').flexslider({
-	slideshow: false, // Change to "true" to make the slides slide automatically
+	slideshow: true, // Change to "true" to make the slides slide automatically
 	animation: "slide",
-	animationLoop: false,
+	animationLoop: true,
+	slideshowSpeed: 4000,
 	pauseOnHover: true,
 	controlNav: false,
 	directionNav: true,
-	prevText: "Prev",
-	nextText: "Next",
+	prevText: "Client",
+	nextText: "Lawyer",
 	smoothHeight: true,
 	start: function(slider) {
 		$('body').removeClass('loading');
