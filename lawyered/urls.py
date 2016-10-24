@@ -74,7 +74,7 @@ urlpatterns = [
     url(r'^', include(router.urls)),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     url(r'^divorce/(?P<divorceForm_id>\d+)/$', views.divcasedetail, name='divcasedetail'),
-    url(r'^prenup/(?P<prenupForm_id>\d+)/$', views.precasedetail, name='precasedetail'),
+    url(r'^prenup/(?P<prenupForm_id>\d+)/$', views.prenup_update, name='prenup_update'),
     url(r'^criminal/(?P<criminalForm_id>\d+)/$', views.cricasedetail, name='cricasedetail'),
     url(r'^merger/(?P<mergerForm_id>\d+)/$', views.mercasedetail, name='mercasedetail'),
     url(r'^estate/(?P<estateForm_id>\d+)/$', views.estcasedetail, name='estcasedetail'),
