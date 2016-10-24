@@ -46,7 +46,7 @@ urlpatterns = [
 #    url(r'^login/$', views.login, {'template_name' : 'login.html'}),
     url(r'^login/$', views.login_view, name='login'),
     url(r'^login/$',login, name = 'login'),
-	url(r'^logout/$',logout, {'next_page': '/lawyered'}, name='logout'),
+	url(r'^logout/$',logout, {'next_page': '/'}, name='logout'),
 	url(r'^register/$', views.register, name='register'),
     url(r'^dashboard/$',views.dashboard,name='dashboard'),
 	url(r'^search/$', views.person_list, name='search'),
