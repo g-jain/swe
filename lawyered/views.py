@@ -602,16 +602,17 @@ def prenup_update(request, prenupForm_id):
     if form.is_valid():
         form.save()
         return redirect('dashboard')
-    return render(request, 'lawyered/precasedet.html', {'form':form, 'username':request.user.username}})
+    else:
+        return render(request, 'lawyered/precasedet.html', {'form':form, 'username':request.user.username}})
 
 
 def divcasedetail(request, divorceForm_id):
     dcase = divorceForm.objects.get(pk=divorceForm_id)
     return render(request, 'lawyered/divcasedet.html', {'dcase': dcase, 'username':request.user.username} )
     
-def precasedetail(request, prenupForm_id):
-    pcase = prenupForm.objects.get(pk=prenupForm_id)
-    return render(request, 'lawyered/precasedet.html', {'pcase':pcase,'username':request.user.username})
+# def precasedetail(request, prenupForm_id):
+#     pcase = prenupForm.objects.get(pk=prenupForm_id)
+#     return render(request, 'lawyered/precasedet.html', {'pcase':pcase,'username':request.user.username})
     
 def cricasedetail(request, criminalForm_id):
     ccase = criminalForm.objects.get(pk=criminalForm_id)
