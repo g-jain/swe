@@ -596,8 +596,8 @@ def forumlogout(request):
     logout(request)
     return HttpResponseRedirect('/lawyered/forum')
 
-def prenup_update(request, pk, template_name='/lawyered/precasedet.html'):
-    pcase = prenupForm.get_object_or_404(pk=pk)
+def prenup_update(request, prenupForm_id, template_name='/lawyered/precasedet.html'):
+    pcase = prenupForm.get_object_or_404(pk=prenupForm_id)
     form = prenupCaseForm(request.POST or None, instance=pcase)
     if form.is_valid():
         form.save()
