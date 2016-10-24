@@ -596,6 +596,13 @@ def forumlogout(request):
     logout(request)
     return HttpResponseRedirect('/lawyered/forum')
 
+def prenup_update(request, prenupForm_id):
+    pcase = prenupForm.objects.get(pk=prenupForm_id)
+    form = prenupCaseForm(request.POST or None, instance=pcase)
+    if form.is_valid():
+        form.save()
+        return redirect('dashboard')
+    return render(request, 'lawyered/precasedet.html', {'form':form, 'username':request.user.username}})
 
 def divcasedetail(request, divorceForm_id):
     dcase = divorceForm.objects.get(pk=divorceForm_id)
