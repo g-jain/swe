@@ -601,7 +601,7 @@ def prenup_update(request, prenupForm_id):
     form = prenupCaseForm(request.POST or None, instance=pcase)
     if form.is_valid():
         form.save()
-        return redirect('dashboard')
+        return render(request,'lawyered/done.html', {'username':request.user.username})
     else:
         return render(request, 'lawyered/precasedet.html', {'form':form, 'username':request.user.username})
 
