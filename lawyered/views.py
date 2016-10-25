@@ -25,8 +25,7 @@ def login_view(request):
             user = authenticate(username=cd['username'], password=cd['password'])
             username = form.cleaned_data['username']
             if user is not None:
-                login(request,user)
-                return render(request,'lawyered/dashboard.html', {'username': username})
+                dashboard(request)
             else:
                 return render(request, 'lawyered/invalid.html')
 

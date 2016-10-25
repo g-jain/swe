@@ -50,7 +50,7 @@
     <div id="sidebar"  class="nav-collapse ">
       <!-- sidebar menu start-->
       <ul class="sidebar-menu" id="nav-accordion">
-        
+
        <p class="centered"><a href="profile.html"><img src="{%static 'lawyered/assets/img/ui-sam.jpg' %}" class="img-circle" width="60"></a></p>
        <h5 class="centered">{{ username }}</h5>
        
@@ -86,13 +86,96 @@
 <!--main content start-->
 <section id="main-content">
   <section class="wrapper site-min-height">
-    
-   
-    <h1>{{dcase.name}}</h1>
-    <h2>{{dcase.budget}}</h2>
-  </section>
+    <form class="form-horizontal style-form" >
+      <div class="row mt">
+        <div class="col-lg-12">
+          <div class="form-panel">
 
-  <!--main content end-->
+            <div class="form-group">
+              <label class="col-lg-4 col-md-4 col-sm-4 col-xs-4 control-label"><b>Name</b></label>
+              <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                <p class="form-control-static">{{dcase.name}}</p>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-lg-4 col-md-4 col-sm-4 col-xs-4 control-label"><b>What is your Spouse's name?</b></label>
+              <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                <p class="form-control-static">{{dcase.spouse}}</p>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-lg-4 col-md-4 col-sm-4 col-xs-4 control-label"><b>What was your Date of Marriage?</b></label>
+              <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                <p class="form-control-static">{{dcase.date_of_marriage}}</p>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-lg-4 col-md-4 col-sm-4 col-xs-4 control-label"><b>Gender of your spouse?</b></label>
+              <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                <p class="form-control-static">{{dcase.gender}}</p>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-lg-4 col-md-4 col-sm-4 col-xs-4 control-label"><b>Was a pre-nuptial agreement in place at the time of marriage?</b></label>
+              <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                <p class="form-control-static">{{dcase.mutual}}</p>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-lg-4 col-md-4 col-sm-4 col-xs-4 control-label"><b>What Assets did spouse have before marriage? (Select All that Apply)</b></label>
+              <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                <p class="form-control-static">{{dcase.assets}}</p>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-lg-4 col-md-4 col-sm-4 col-xs-4 control-label"><b>What Assets did spouse acquire after marriage? (Select All that Apply)</b></label>
+              <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                <p class="form-control-static">{{dcase.assets_before}}</p>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-lg-4 col-md-4 col-sm-4 col-xs-4 control-label"><b>Do you have children?</b></label>
+              <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                <p class="form-control-static">{{dcase.children}}</p>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-lg-4 col-md-4 col-sm-4 col-xs-4 control-label"><b>Will either spouse be asking for child support?</b></label>
+              <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                <p class="form-control-static">{{dcase.custody}}</p>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-lg-4 col-md-4 col-sm-4 col-xs-4 control-label"><b>Budget</b></label>
+              <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                <p class="form-control-static">{{dcase.budget}}</p>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-lg-4 col-md-4 col-sm-4 col-xs-4 control-label"><b>Other Details</b></label>
+              <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                <p class="form-control-static">{{dcase.details}}</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </form>
+
+  </section>
+</section>
+<!--main content end-->
 
 </section>
 
