@@ -25,7 +25,15 @@ def login_view(request):
             user = authenticate(username=cd['username'], password=cd['password'])
             username = form.cleaned_data['username']
             if user is not None:
-                return dashboard(request)
+                login(request,user)
+                username = request.user.username
+                divcases = divorceForm.objects.filter(name__contains = username)
+                duicases = duiForm.objects.filter(name__contains = username)
+                cricases = criminalForm.objects.filter(name__contains = username)
+                precases = prenupForm.objects.filter(name__contains = username)
+                mercases = mergerForm.objects.filter(name__contains = username)
+                estcases = estateForm.objects.filter(name__contains = username)
+                return render(request,'lawyered/dashboard.html', {'username': username, 'divcases':divcases, 'duicases':duicases, 'cricases' : cricases,'mercases': mercases, 'precases' : precases, 'estcases' : estcases })
             else:
                 return render(request, 'lawyered/invalid.html')
 
