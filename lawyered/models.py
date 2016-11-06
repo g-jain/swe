@@ -14,7 +14,7 @@ class UserProfile(models.Model):
 
 	user = models.OneToOneField(User)
 	points = models.IntegerField(default=0)
-	type_user = models.CharField(max_length=250, choices=USER_TYPE_CHOICES, default='c')
+	type_user = models.CharField(max_length=250, choices=USER_TYPE_CHOICES, blank=True)
 	first_name = models.CharField(max_length=250,default='.')
 	last_name = models.CharField(max_length=250,default='.')
 	area = models.CharField(max_length=250, default='.')
