@@ -48,6 +48,7 @@ urlpatterns = [
     url(r'^login/$',login, name = 'login'),
 	url(r'^logout/$',logout, {'next_page': '/'}, name='logout'),
 	url(r'^register/$', views.register, name='register'),
+    url(r'^registerlawyer/$', views.registerlawyer, name='registerlawyer'),
     url(r'^dashboard/$',views.dashboard,name='dashboard'),
 	url(r'^search/$', views.person_list, name='search'),
 	url(r'^add_cases/$', views.form_list, name='add_cases'),

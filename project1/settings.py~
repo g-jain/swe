@@ -27,6 +27,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+import dj_database_url
+# db_from_env = dj_database_url.config(conn_max_age=500)
+# DATABASES['default'].update(db_from_env)
 
 # Application definition
 
@@ -79,20 +82,37 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'project1.wsgi.application'
 
+#if ON_HEROKU :
+#	DATABASES = {'default': dj_database_url.config()}
+#else:
+#	 DATABASES = {
+ #    'default': {
+ #	    'ENGINE': 'django.db.backends.postgresql_psycopg2',
+  #       'NAME': 'lawyered',
+   #      'USER': 'lawyer',
+    #     'PASSWORD': 'password',
+     #    'HOST': 'localhost',
+      #   'PORT': '',
+#         #'ENGINE': 'django.db.backends.sqlite3',
+#         #'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
 
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'lawyered',
-        'USER': 'swe',
-        'PASSWORD': 'swe',
-        'HOST': 'localhost',
-        'PORT': '',
-    }
-}
+     'default': {
+ 	    'ENGINE': 'django.db.backends.postgresql_psycopg2',
+         'NAME': 'lawyered',
+         'USER': 'lawyer',
+         'PASSWORD': 'password',
+         'HOST': 'localhost',
+         'PORT': '',
+         #'ENGINE': 'django.db.backends.sqlite3',
+         #'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+     }
+ }
 
 
 REST_FRAMEWORK = {
@@ -121,6 +141,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
+
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
 #redirection
 LOGIN_REDIRECT_URL = 'lawyered/dashboard'
@@ -129,3 +155,4 @@ LOGIN_REDIRECT_URL = 'lawyered/dashboard'
 MEDIA_URL = '/home/project1/lawyered/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
+# DJANGO_SETTINGS_MODULE  website.settings

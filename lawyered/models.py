@@ -6,6 +6,29 @@ import datetime
 from django_markdown.models import MarkdownField
 
 
+class UserProfile(models.Model):
+	USER_TYPE_CHOICES = (
+		('c', 'Client'),
+		('l', 'Lawyer' ),
+	)
+
+	user = models.OneToOneField(User)
+	points = models.IntegerField(default=0)
+	type_user = models.CharField(max_length=250, choices=USER_TYPE_CHOICES, default='c')
+	first_name = models.CharField(max_length=250,default='.')
+	last_name = models.CharField(max_length=250,default='.')
+	area = models.CharField(max_length=250, default='.')
+	contact = models.IntegerField(default= 0)
+	specialization = models.CharField(max_length=250,default='.')
+	bar_no = models.IntegerField(default=0)
+	details = models.TextField(max_length=1000, default='.')
+	picture = models.ImageField(upload_to='lawyered/media/',blank=True)
+	website = models.URLField(blank=True)
+
+    # Override the __unicode__() method to return out something meaningful!
+	def __unicode__(self):
+		return self.user.username
+	
 class person(models.Model):
 	name = models.CharField(max_length=250)
 	area = models.CharField(max_length=250)
@@ -16,18 +39,18 @@ class person(models.Model):
 		return self.name	
 
 #userprofile
-class UserProfile(models.Model):
+#class UserProfile(models.Model):
     # This line is required. Links UserProfile to a User model instance.
-    user = models.OneToOneField(User)
-    points = models.IntegerField(default=0)
+#    user = models.OneToOneField(User)
+#    points = models.IntegerField(default=0)
 
     # The additional attributes we wish to include.
-    website = models.URLField(blank=True)
-    picture = models.ImageField(upload_to='qa/static/profile_images', blank=True)
+#    website = models.URLField(blank=True)
+#    picture = models.ImageField(upload_to='qa/static/profile_images', blank=True)
 
     # Override the __unicode__() method to return out something meaningful!
-    def __unicode__(self):
-        return self.user.username
+#    def __unicode__(self):
+#        return self.user.username
 	
 #tags for forum
 class Tag(models.Model):
@@ -41,7 +64,7 @@ class Tag(models.Model):
 
 #forum question
 class Question(models.Model):
-    question_text = models.CharField(max_length=200)
+    question_text = models.CharField(max_length=1000)
     pub_date = models.DateTimeField('date published')
     tags = models.ManyToManyField(Tag)
     reward = models.IntegerField(default=0)

@@ -26,14 +26,24 @@ def login_view(request):
             username = form.cleaned_data['username']
             if user is not None:
                 login(request,user)
+                profile = request.user.userprofile
                 username = request.user.username
+            #    user_id = request.POST.get('user')
+            #    profile = Profile.objects.all()
+            #    type = request.user.type_user
+            #    user_ob = User.objects.get(id=user_id)
+                usertype = profile.type_user
                 divcases = divorceForm.objects.filter(name__contains = username)
                 duicases = duiForm.objects.filter(name__contains = username)
                 cricases = criminalForm.objects.filter(name__contains = username)
                 precases = prenupForm.objects.filter(name__contains = username)
                 mercases = mergerForm.objects.filter(name__contains = username)
                 estcases = estateForm.objects.filter(name__contains = username)
-                return render(request,'lawyered/dashboard.html', {'username': username, 'divcases':divcases, 'duicases':duicases, 'cricases' : cricases,'mercases': mercases, 'precases' : precases, 'estcases' : estcases })
+                if usertype == 'c' :
+                    return render(request,'lawyered/dashboard.html', {'username': username, 'divcases':divcases, 'duicases':duicases, 'cricases' : cricases,'mercases': mercases, 'precases' : precases, 'estcases' : estcases })
+                elif usertype == 'l':
+                    return render(request,'lawyered/lawyerdashboard.html', {'username': username, 'divcases':divcases, 'duicases':duicases, 'cricases' : cricases,'mercases': mercases, 'precases' : precases, 'estcases' : estcases })
+                
             else:
                 return render(request, 'lawyered/invalid.html')
 
@@ -87,6 +97,32 @@ def register(request):
         profile_form = UserProfileForm()
 
     return render(request,'lawyered/register.html',{'user_form': user_form, 'profile_form': profile_form, 'registered': registered})
+
+def registerlawyer(request):
+    context = RequestContext(request)
+    registered = False
+
+    if request.method == 'POST':
+        user_form = LawyerRegistrationForm(data=request.POST)
+        profile_form = LawyerProfileForm(data=request.POST)
+
+        if user_form.is_valid() and profile_form.is_valid():
+            user = user_form.save(commit=False)
+            user.set_password(user_form.cleaned_data['password'])
+            user.save()
+            profile = profile_form.save(commit=False)
+            profile.user = user
+            profile.save()
+            registered = True
+            return render(request,'lawyered/register_done.html')
+        else:
+            print (user_form.errors, profile_form.errors)
+
+    else:
+        user_form = LawyerRegistrationForm()
+        profile_form = LawyerProfileForm()
+
+    return render(request,'lawyered/register.html',{'user_form': user_form,'profile_form': profile_form, 'registered': registered})
 
 @login_required
 def dashboard(request):
@@ -206,7 +242,7 @@ def profile(request, user_id):
 
 def add(request):
     if request.user.is_anonymous():
-        return HttpResponseRedirect("/login/")
+        return HttpResponseRedirect("/forum/login")
 
     if request.method == 'POST':
         question_text = request.POST['question']
@@ -601,7 +637,7 @@ def estate(request):
 
 def forumlogout(request):
     logout(request)
-    return HttpResponseRedirect('/lawyered/forum')
+    return HttpResponseRedirect('/forum')
 
 def prenup_update(request, prenupForm_id):
     pcase = prenupForm.objects.get(pk=prenupForm_id)
