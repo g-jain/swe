@@ -1,0 +1,106 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="">
+	<meta name="author" content="Dashboard">
+	<meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+
+	<title>Lawyer Register</title>
+
+	<!-- Bootstrap core CSS -->
+	<link href="{%static 'lawyered/assets/css/bootstrap.css' %}" rel="stylesheet">
+	<!--external css-->
+	<link href="{%static 'lawyered/assets/font-awesome/css/font-awesome.css' %}" rel="stylesheet" />
+	
+	<!-- Custom styles for this template -->
+	<link href="{%static 'lawyered/assets/css/style.css' %}" rel="stylesheet">
+	<link href="{%static 'lawyered/assets/css/style-responsive.css' %}" rel="stylesheet">
+
+	<script src="{%static 'lawyered/assets/js/chart-master/Chart.js' %}"></script>
+</head>
+
+<body>
+
+	<div id="login-page">
+		<div class="container">
+
+			<form class="form-login" action="." method="post">
+				<h2 class="form-login-heading">Sign Up : Lawyer</h2>
+				<div class="login-wrap">
+					<input id="id_username" maxlength="150" class="form-control"name="username" placeholder="Username" type="text" required />
+					<span class="helptext">Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.</span>
+					<br> <br>
+					<input id="id_email" maxlength="254" class="form-control" name="email" placeholder="Email Id" type="email" />
+					<br>
+					<input id="id_first_name" maxlength="250" class="form-control" name="first_name" placeholder="First Name" type="text" required />
+					<br>
+					<input id="id_last_name" maxlength="250" class="form-control" name="last_name" placeholder="Last Name" type="text" required />
+					<br>
+					<input id="id_area" maxlength="250" class="form-control" name="area" type="text" placeholder="In which city do you practice?" required />
+					<br>
+					<div class="radio">
+						<label for="id_specialization_0">What is your area of specialization?</label>
+						<ul id="id_specialization">
+							<li>
+								<label for="id_specialization_0"><input id="id_specialization_0" name="specialization" type="radio" value="1" required /> Divorce</label>
+							</li>
+							<li>
+								<label for="id_specialization_1"><input id="id_specialization_1" name="specialization" type="radio" value="2" required /> Dui</label>
+							</li>
+							<li>
+								<label for="id_specialization_2"><input id="id_specialization_2" name="specialization" type="radio" value="3" required /> Criminal</label>
+							</li>
+							<li>
+								<label for="id_specialization_3"><input id="id_specialization_3" name="specialization" type="radio" value="4" required /> Family</label>
+							</li>
+							<li>
+								<label for="id_specialization_4"><input id="id_specialization_4" name="specialization" type="radio" value="5" required /> Merger</label>
+							</li>
+							<li>
+								<label for="id_specialization_5"><input id="id_specialization_5" name="specialization" type="radio" value="6" required /> Estate</label>
+							</li>
+						</ul>
+					</div>
+					<br>
+					<input id="id_details" maxlength="1000" class="form-control" name="details" placeholder="Please enter more about you" type="text" />
+					<br>
+					<input id="id_contact" maxlength="12" class="form-control" name="contact" placeholder="Enter your contact number" type="text" required />
+					<br>
+					<input id="id_password" class="form-control" name="password" type="password" placeholder="Password" required /></p>
+					<br>
+					<div class="radio">
+						<label for="id_type_user_0">User Type:</label>
+						<ul id="id_type_user">
+							<li>
+								<label for="id_type_user_0"><input checked="checked" id="id_type_user_0" name="type_user" type="radio" value="c" required /> Client</label>
+							</li>
+							<li>
+								<label for="id_type_user_1"><input id="id_type_user_1" name="type_user" type="radio" value="l" required /> Lawyer</label>
+							</li>
+						</ul>
+					</div>
+					<br>
+					{% csrf_token %}
+					<button class="btn btn-theme btn-block"  type="submit">Create My Account</button>
+				</div>
+			</form>
+		</div>
+	</div>
+	
+	<!-- js placed at the end of the document so the pages load faster -->
+	<script src="assets/js/jquery.js"></script>
+	<script src="assets/js/bootstrap.min.js"></script>
+
+	<!--BACKSTRETCH-->
+	<!-- You can use an image of whatever size. This script will stretch to fit in any screen size.-->
+	<script type="text/javascript" src="assets/js/jquery.backstretch.min.js"></script>
+	<script>
+	$.backstretch("assets/img/login-bg.jpg", {speed: 500});
+	</script>
+
+</body>
+</html>

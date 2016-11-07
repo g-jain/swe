@@ -34,76 +34,76 @@ import dj_database_url
 # Application definition
 
 INSTALLED_APPS = (
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
+	'django.contrib.admin',
+	'django.contrib.auth',
+	'django.contrib.contenttypes',
+	'django.contrib.sessions',
+	'django.contrib.messages',
+	'django.contrib.staticfiles',
 #    'django.contrib.sites',
-    'lawyered',
-    'bootstrap3',
-    'django_markdown',
-    'rest_framework',
+	'lawyered',
+	'bootstrap3',
+	'django_markdown',
+	'rest_framework',
 )
 
 #SITE_ID = 1
 
 MIDDLEWARE_CLASSES = (
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'django.middleware.security.SecurityMiddleware',
+	'django.contrib.sessions.middleware.SessionMiddleware',
+	'django.middleware.common.CommonMiddleware',
+	'django.middleware.csrf.CsrfViewMiddleware',
+	'django.contrib.auth.middleware.AuthenticationMiddleware',
+	'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
+	'django.contrib.messages.middleware.MessageMiddleware',
+	'django.middleware.clickjacking.XFrameOptionsMiddleware',
+	'django.middleware.security.SecurityMiddleware',
 #    'pybb.middleware.PybbMiddleware',
 )
 
 ROOT_URLCONF = 'project1.urls'
 
 TEMPLATES = [
-    {
-        'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
-        'APP_DIRS': True,
-        'OPTIONS': {
-            'context_processors': [
-                'django.template.context_processors.debug',
-                'django.template.context_processors.request',
-                'django.contrib.auth.context_processors.auth',
-                'django.contrib.messages.context_processors.messages',
+	{
+		'BACKEND': 'django.template.backends.django.DjangoTemplates',
+		'DIRS': [],
+		'APP_DIRS': True,
+		'OPTIONS': {
+			'context_processors': [
+				'django.template.context_processors.debug',
+				'django.template.context_processors.request',
+				'django.contrib.auth.context_processors.auth',
+				'django.contrib.messages.context_processors.messages',
 #                'pybb.context_processors.processor',
-            ],
-        },
-    },
+			],
+		},
+	},
 ]
 
 WSGI_APPLICATION = 'project1.wsgi.application'
 
 #if ON_HEROKU :
-DATABASES = {'default': dj_database_url.config()}
+# DATABASES = {'default': dj_database_url.config()}
 #else:
-#	 DATABASES = {
- #    'default': {
- #	    'ENGINE': 'django.db.backends.postgresql_psycopg2',
-  #       'NAME': 'lawyered',
-   #      'USER': 'lawyer',
-    #     'PASSWORD': 'password',
-     #    'HOST': 'localhost',
-      #   'PORT': '',
-#         #'ENGINE': 'django.db.backends.sqlite3',
-#         #'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#     }
-# }
+DATABASES = {
+	'default': {
+		'ENGINE': 'django.db.backends.postgresql_psycopg2',
+		'NAME': 'lawyered',
+		'USER': 'lawyer',
+		'PASSWORD': 'password',
+		'HOST': 'localhost',
+		'PORT': '',
+		#'ENGINE': 'django.db.backends.sqlite3',
+		#'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+	}
+}
 
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 
 #DATABASES = {
 #     'default': {
-# 	    'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#       'ENGINE': 'django.db.backends.postgresql_psycopg2',
 #         'NAME': 'lawyered',
 #         'USER': 'swe',
 #         'PASSWORD': 'swe',
@@ -116,11 +116,11 @@ DATABASES = {'default': dj_database_url.config()}
 
 
 REST_FRAMEWORK = {
-    # Use Django's standard `django.contrib.auth` permissions,
-    # or allow read-only access for unauthenticated users.
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
-    ]
+	# Use Django's standard `django.contrib.auth` permissions,
+	# or allow read-only access for unauthenticated users.
+	'DEFAULT_PERMISSION_CLASSES': [
+		'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+	]
 }
 
 # Internationalization
@@ -143,7 +143,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static'),
+	os.path.join(BASE_DIR, 'static'),
 )
 
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'

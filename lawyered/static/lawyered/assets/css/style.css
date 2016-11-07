@@ -997,7 +997,7 @@ PANELS CONFIGURATIONS
 /*Panel Size*/
 
 .pn {
-	height: 250px;
+	height: 350px;
 	box-shadow: 0 2px 1px rgba(0, 0, 0, 0.2);
 }
 
@@ -1500,12 +1500,20 @@ PANELS CONFIGURATIONS
 
 /* PROFILE PANELS */
 /* Profile 01*/
+.user-01 {
+    background: url(../img/client.jpg) no-repeat center top;
+}
+
+.user-02 {
+    background: url(../img/lawyer.png) no-repeat center top;
+}
+
 #profile-01 {
-	background: url(../img/profile-01.jpg) no-repeat center top;
+	/*background: url(../img/client.jpg) no-repeat center top;*/
 	margin-top: -15px;
 	background-attachment: relative;
 	background-position: center center;
-	min-height: 150px;
+	min-height: 300px;
 	width: 100%;
     -webkit-background-size: 100%;
     -moz-background-size: 100%;
@@ -1549,12 +1557,12 @@ PANELS CONFIGURATIONS
 
 /* Profile 02*/
 #profile-02 {
-	background: url(../img/profile-02.jpg) no-repeat center top;
-	margin-top: -15px;
-	background-attachment: relative;
-	background-position: center center;
-	min-height: 200px;
-	width: 100%;
+    background: url(../img/profile-02.jpg) no-repeat center top;
+    margin-top: -15px;
+    background-attachment: relative;
+    background-position: center center;
+    min-height: 300px;
+    width: 100%;
     -webkit-background-size: 100%;
     -moz-background-size: 100%;
     -o-background-size: 100%;

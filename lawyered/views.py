@@ -51,6 +51,9 @@ def login_view(request):
         form = LoginForm()
         return render(request, 'lawyered/login.html', {'form': form})
 
+def choose(request):
+    return render(request, 'lawyered/choose.html')
+
 def forumlogin(request):
     if request.method== 'POST':
         form = LoginForm(request.POST)
@@ -122,7 +125,7 @@ def registerlawyer(request):
         user_form = LawyerRegistrationForm()
         profile_form = LawyerProfileForm()
 
-    return render(request,'lawyered/register.html',{'user_form': user_form,'profile_form': profile_form, 'registered': registered})
+    return render(request,'lawyered/reglawyer.html',{'user_form': user_form,'profile_form': profile_form, 'registered': registered})
 
 @login_required
 def dashboard(request):
