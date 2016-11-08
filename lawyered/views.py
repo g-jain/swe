@@ -56,6 +56,9 @@ def login_view(request):
 
 def choose(request):
     return render(request, 'lawyered/choose.html')
+	
+def up(request):
+    return render(request, 'lawyered/profileuser.html')
 
 def forumlogin(request):
     if request.method== 'POST':

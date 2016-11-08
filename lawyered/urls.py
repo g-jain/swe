@@ -49,6 +49,7 @@ urlpatterns = [
 	url(r'^logout/$',logout, {'next_page': '/'}, name='logout'),
     url(r'^choose/$',views.choose, name='choose'),
 	url(r'^register/$', views.register, name='register'),
+	url(r'^profileuser/$', views.up, name='userprofile'),
     url(r'^registerlawyer/$', views.registerlawyer, name='registerlawyer'),
     url(r'^dashboard/$',views.dashboard,name='dashboard'),
 	url(r'^search/$', views.person_list, name='search'),
