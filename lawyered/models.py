@@ -21,7 +21,7 @@ class UserProfile(models.Model):
 	contact = models.IntegerField(default= 0)
 	specialization = models.CharField(max_length=250,default='.')
 	bar_no = models.IntegerField(default=0)
-	details = models.TextField(max_length=1000, default='.')
+	details = models.TextField(max_length=1000, blank=True)
 	picture = models.ImageField(upload_to='lawyered/media/',blank=True)
 	website = models.URLField(blank=True)
 

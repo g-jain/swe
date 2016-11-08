@@ -202,7 +202,7 @@ def tag(request, tag):
     count_a = Answer.objects.count
 
     template = 'lawyered/forum.html'
-    context = request, {
+    context = {
     'questions': questions,
     'totalcount': count,
     'anscount': count_a,
@@ -279,7 +279,7 @@ def add(request):
                 t.save()
                 q.tags.add(t)
      
-        return HttpResponseRedirect('/lawyered/forum')
+        return HttpResponseRedirect('/forum')
     return render(request, 'lawyered/add.html')
 #    return HttpResponse(template.render(context))
 

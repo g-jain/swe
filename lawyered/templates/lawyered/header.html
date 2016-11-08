@@ -130,5 +130,10 @@ $(function () {
 </script>
 
 <div class="page-header">
-  <a class="btn btn-lg btn-warning pull-right" href="#search"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> Find</a><a class="btn btn-lg btn-danger pull-right" href="{% url "lawyered:add" %}"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Ask Question</a><h1><a href="{% url "lawyered:forum" %}"><img width="50px" src="http://icons.iconarchive.com/icons/seanau/flat-app/256/Questionmark-icon.png" /><orange>LAWYERED</orange> </a></h1>
+   <form method = 'GET' action=''>
+      <input type ='text' name='find' placeholder='Search question'/>
+      <input type='submit' value='Find' />
+      </form>
+<!--  <a class="btn btn-lg btn-warning pull-right" href="#search"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> Find</a>  -->
+<a class="btn btn-lg btn-danger pull-right" href="{% url "lawyered:add" %}"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Ask Question</a><h1><a href="{% url "lawyered:forum" %}"><img width="50px" src="http://icons.iconarchive.com/icons/seanau/flat-app/256/Questionmark-icon.png" /><orange>LAWYERED</orange> </a></h1>
 </div>

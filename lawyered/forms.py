@@ -18,7 +18,6 @@ class UserRegistrationForm(forms.ModelForm):
     password = forms.CharField(label='Password',widget=forms.PasswordInput)
     password2 = forms.CharField(label='Repeat password',widget=forms.PasswordInput)
     type_user = forms.CharField(widget = forms.HiddenInput(), initial='c', max_length = 250)
-    area= forms.CharField(label = 'In which city do you practice in?', max_length = 250)
     class Meta:
         model = User
         fields = ('username', 'first_name', 'email')
@@ -39,12 +38,12 @@ class QuestionForm(forms.ModelForm):
 class UserProfileForm(forms.ModelForm):
     class Meta:
         model = UserProfile
-        fields = ('website', 'picture','type_user')
+        fields = ('website', 'picture','type_user', 'first_name' )
 
 class LawyerProfileForm(forms.ModelForm):
     class Meta:
         model = UserProfile
-        fields = ('type_user','specialization', 'area')
+        fields = ('first_name','last_name','area','type_user','specialization', 'bar_no', 'contact','details' )
     
 class LawyerRegistrationForm(forms.ModelForm):
     USER_TYPE_CHOICES = (
@@ -52,16 +51,16 @@ class LawyerRegistrationForm(forms.ModelForm):
         ('l', 'Lawyer' ),
     )
     CHOICES9 = (('1','Divorce'),('2','Dui'),('3','Criminal'),('4','Family'),('5','Merger'),('6','Estate'))
-    type_user = forms.CharField(initial='l', max_length = 250, disabled = True)
-    first_name = forms.CharField(label = 'Enter your first name', max_length = 250)
-    last_name = forms.CharField(label = 'Enter your last name?', max_length = 250)
-    area = forms.CharField(label = 'In which city do you practice in?', max_length = 250)
-    specialization = forms.MultipleChoiceField(widget = forms.CheckboxSelectMultiple, choices = CHOICES9, label = 'What is your area of specialization?')
-    details = forms.CharField(label = 'Please enter more about you', max_length = 1000, required=False)
-    #image = No idea
+    password = forms.CharField(label='Password     :',widget=forms.PasswordInput)
+    type_user = forms.CharField(label='Type of User :', initial='l', max_length = 250, widget = forms.HiddenInput())
+    first_name = forms.CharField(label = 'Enter your first name:', max_length = 250)
+    last_name = forms.CharField(label = 'Enter your last name:', max_length = 250)
+    area = forms.CharField(label = 'In which city do you practice in:', max_length = 250)
+    specialization = forms.MultipleChoiceField(widget = forms.CheckboxSelectMultiple, choices = CHOICES9, label = 'Choose your area of specialization:')
+    bar_no = forms.IntegerField(label='Enter your bar number:   ')
     image=models.ImageField(upload_to='lawyered/media', blank=True )
     contact = forms.CharField(label = 'Enter your contact number', max_length = 12)
-    password = forms.CharField(label='Password',widget=forms.PasswordInput)
+    
     class Meta:
         model = User
         fields = ('username', 'email')
