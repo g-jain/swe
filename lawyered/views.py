@@ -45,11 +45,14 @@ def login_view(request):
                     return render(request,'lawyered/lawyerdashboard.html', {'username': username, 'divcases':divcases, 'duicases':duicases, 'cricases' : cricases,'mercases': mercases, 'precases' : precases, 'estcases' : estcases })
                 
             else:
+            #    print (form.errors)
                 return render(request, 'lawyered/invalid.html')
 
     else:
         form = LoginForm()
-        return render(request, 'lawyered/login.html', {'form': form})
+
+    return render(request, 'lawyered/login.html', {'form': form})
+
 
 def choose(request):
     return render(request, 'lawyered/choose.html')
@@ -68,7 +71,8 @@ def forumlogin(request):
                 return render(request, 'lawyered/invalid.html')
     else:
         form = LoginForm()
-        return render(request, 'lawyered/login.html', {'form': form})
+
+    return render(request, 'lawyered/login.html', {'form': form})
 
     
     

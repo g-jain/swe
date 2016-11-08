@@ -32,7 +32,7 @@
 			<form class="form-login" action="." method="post">
 				<h2 class="form-login-heading">Sign Up : Client</h2>
 				<div class="login-wrap">
-					<input id="id_username" maxlength="150" class="form-control" placeholder="Username" name="username" type="text" required /> <span class="helptext">Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.</span>
+				<!--	<input id="id_username" maxlength="150" class="form-control" placeholder="Username" name="username" type="text" required /> <span class="helptext">Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.</span>
 					<br> <br>
 					<input id="id_first_name" maxlength="30" name="first_name" type="text" class="form-control" placeholder="First Name"/>
 					<br>
@@ -55,8 +55,9 @@
 							</li>
 						</ul>
 					</div>
-					<br>
+					<br>  -->
 					{% csrf_token %}
+                    {{ user_form.as_p }}
 					<button class="btn btn-theme btn-block"  type="submit">Create My Account</button>
 				</div>
 			</form>
@@ -64,16 +65,15 @@
 	</div>
 
 	<!-- js placed at the end of the document so the pages load faster -->
-	<script src="assets/js/jquery.js"></script>
-	<script src="assets/js/bootstrap.min.js"></script>
+	<script src="{%static 'lawyered/assets/js/jquery.js' %}"></script>
+    <script src="{%static 'lawyered/assets/js/bootstrap.min.js' %}"></script>
 
-	<!--BACKSTRETCH-->
-	<!-- You can use an image of whatever size. This script will stretch to fit in any screen size.-->
-	<script type="text/javascript" src="assets/js/jquery.backstretch.min.js"></script>
-	<script>
-	$.backstretch("assets/img/login-bg.jpg", {speed: 500});
-	</script>
-
+    <!--BACKSTRETCH-->
+    <!-- You can use an image of whatever size. This script will stretch to fit in any screen size.-->
+    <script type="text/javascript" src="{%static 'lawyered/assets/js/jquery.backstretch.min.js' %}"></script>
+    <script>
+<!--    $.backstretch("assets/img/login-bg.jpg", {speed: 500}); -->
+    </script>
 
 </body>
 </html>

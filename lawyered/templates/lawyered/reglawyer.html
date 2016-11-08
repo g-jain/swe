@@ -31,7 +31,7 @@
 			<form class="form-login" action="." method="post">
 				<h2 class="form-login-heading">Sign Up : Lawyer</h2>
 				<div class="login-wrap">
-					<input id="id_username" maxlength="150" class="form-control"name="username" placeholder="Username" type="text" required />
+				<!--	<input id="id_username" maxlength="150" class="form-control"name="username" placeholder="Username" type="text" required />
 					<span class="helptext">Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.</span>
 					<br> <br>
 					<input id="id_email" maxlength="254" class="form-control" name="email" placeholder="Email Id" type="email" />
@@ -83,7 +83,8 @@
 							</li>
 						</ul>
 					</div>
-					<br>
+					<br>  -->
+					{{ user_form.as_p}}
 					{% csrf_token %}
 					<button class="btn btn-theme btn-block"  type="submit">Create My Account</button>
 				</div>

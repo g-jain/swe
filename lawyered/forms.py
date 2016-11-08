@@ -17,7 +17,7 @@ class UserRegistrationForm(forms.ModelForm):
 
     password = forms.CharField(label='Password',widget=forms.PasswordInput)
     password2 = forms.CharField(label='Repeat password',widget=forms.PasswordInput)
-    type_user = 'c'
+    type_user = forms.CharField(widget = forms.HiddenInput(), initial='c', max_length = 250)
     area= forms.CharField(label = 'In which city do you practice in?', max_length = 250)
     class Meta:
         model = User
@@ -52,7 +52,7 @@ class LawyerRegistrationForm(forms.ModelForm):
         ('l', 'Lawyer' ),
     )
     CHOICES9 = (('1','Divorce'),('2','Dui'),('3','Criminal'),('4','Family'),('5','Merger'),('6','Estate'))
-    type_user = 'l'
+    type_user = forms.CharField(initial='l', max_length = 250, disabled = True)
     first_name = forms.CharField(label = 'Enter your first name', max_length = 250)
     last_name = forms.CharField(label = 'Enter your last name?', max_length = 250)
     area = forms.CharField(label = 'In which city do you practice in?', max_length = 250)
