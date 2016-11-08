@@ -28,10 +28,6 @@ def login_view(request):
                 login(request,user)
                 profile = request.user.userprofile
                 username = request.user.username
-            #    user_id = request.POST.get('user')
-            #    profile = Profile.objects.all()
-            #    type = request.user.type_user
-            #    user_ob = User.objects.get(id=user_id)
                 usertype = profile.type_user
                 divcases = divorceForm.objects.filter(name__contains = username)
                 duicases = duiForm.objects.filter(name__contains = username)
