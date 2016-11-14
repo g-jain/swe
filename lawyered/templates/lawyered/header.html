@@ -1,10 +1,27 @@
+{% load static %}
+
 {% load bootstrap3 %}
 
 {% bootstrap_css %}
 
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="">
+	<meta name="author" content="Dashboard">
+	<meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+
 <title>Forum</title>
 <link rel="icon" type="image/png" href="static/lawyered/icon.ico">
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+<link href="{%static 'lawyered/assets/font-awesome/css/font-awesome.css' %}" rel="stylesheet" />
+	<link rel="stylesheet" type="text/css" href="{%static 'lawyered/assets/css/zabuto_calendar.css' %}">
+	<link rel="stylesheet" type="text/css" href="{%static 'lawyered/assets/js/gritter/css/jquery.gritter.css' %}" />
+	<link rel="stylesheet" type="text/css" href="{%static 'lawyered/assets/lineicons/style.css' %}">    
+	
+	<!-- Custom styles for this template -->
+	<link href="{%static 'lawyered/assets/css/style.css' %}" rel="stylesheet">
+	<link href="{%static 'lawyered/assets/css/style-responsive.css' %}" rel="stylesheet">
 
 {% bootstrap_javascript %}
 
@@ -108,9 +125,36 @@ orange {
   color: #ff8a00;
 }
 
-a:hover {color: #FF8800; }
+a:hover {color: white; }
 
 </style>
+
+<div class="container">
+<!--  <a class="btn btn-lg btn-warning pull-right" href="#search"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> Find</a>  -->
+<!-- <a class="btn btn-lg btn-info pull-right" href="{% url "lawyered:add" %}"><span class="glyphicon glyphicon-plus" aria-hidden="false"></span> Ask Question</a><h1><a href="{% url "lawyered:forum" %}"><blue>LAWYERED</blue> </a></h1>
+-->
+<header class="header black-bg">
+			<!--logo start-->
+			<a href="{% url 'lawyered:forum' %}" class="logo"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; LAWYERED FORUMS</b></a>
+			<!--logo end-->
+			<div class="top-menu">
+				<ul class="nav pull-right top-menu">
+				<li><a class="TopMenu"><form method = 'GET' action=''>
+						<input type ='text' name='find' placeholder='Search question'/>
+						<input type='submit' value='Find' style=" color: black" />
+					</form>
+				</a></li>
+				<li><a class="TopMenu" href="{% url 'lawyered:index' %}">Home</a></li>
+				<li><a class="TopMenu" href="#">How it Works?</a></li>
+				<li><a class="TopMenu" href="#">About</a></li>
+				<li><a class="TopMenu" href="#">Contact Us</a></li>
+				 <li><a class="logout" href="{% url 'lawyered:add' %}">Ask a Question</a></li>
+				</ul>
+			</div>
+		</header>
+		<div style="margin-top:100px"></div>
+	
+</div>
 
 <script>
 $(function () {
@@ -128,12 +172,3 @@ $(function () {
 
 });
 </script>
-
-<div class="page-header">
-   <form method = 'GET' action=''>
-      <input type ='text' name='find' placeholder='Search question'/>
-      <input type='submit' value='Find' />
-      </form>
-<!--  <a class="btn btn-lg btn-warning pull-right" href="#search"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> Find</a>  -->
-<a class="btn btn-lg btn-danger pull-right" href="{% url "lawyered:add" %}"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Ask Question</a><h1><a href="{% url "lawyered:forum" %}"><img width="50px" src="http://icons.iconarchive.com/icons/seanau/flat-app/256/Questionmark-icon.png" /><orange>LAWYERED</orange> </a></h1>
-</div>
