@@ -50,13 +50,9 @@ def login_view(request):
     return render(request, 'lawyered/login.html', {'form': form})
 
 
-def choose(request):
-    return render(request, 'lawyered/choose.html')
-	
-def up(request):
-    return render(request, 'lawyered/profileuser.html')
-
 def forumlogin(request):
+    context = RequestContext(request)
+
     if request.method== 'POST':
         form = LoginForm(request.POST)
         if form.is_valid():
@@ -64,6 +60,7 @@ def forumlogin(request):
             user = authenticate(username=cd['username'], password=cd['password'])
             username = form.cleaned_data['username']
             if user is not None:
+
                 login(request,user)
                 return render(request,'lawyered/forum.html', {'username': username})
             else:
@@ -71,7 +68,7 @@ def forumlogin(request):
     else:
         form = LoginForm()
 
-    return render(request, 'lawyered/login.html', {'form': form})
+        return render(request, 'lawyered/login.html', {'form': form})
 
     
     
@@ -678,3 +675,18 @@ def estcasedetail(request, estateForm_id):
 def duicasedetail(request, duiForm_id):
     ducase = duiForm.objects.get(pk=duiForm_id)
     return render(request, 'lawyered/duicasedet.html', {'ducase': ducase,'username':request.user.username})
+
+def choose(request):
+    return render(request, 'lawyered/choose.html')
+    
+def up(request):
+    return render(request, 'lawyered/profileuser.html')
+
+def browse(request):
+    people = UserProfile.objects.all()
+    lawyers=[]
+    for person in people :
+        if person.type_user == 'l':
+            lawyers.append(person)
+
+    return render(request, 'lawyered/browse.html', {'lawyers' : lawyers})

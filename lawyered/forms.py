@@ -50,7 +50,7 @@ class LawyerRegistrationForm(forms.ModelForm):
         ('c', 'Client'),
         ('l', 'Lawyer' ),
     )
-    CHOICES9 = (('1','Divorce'),('2','Dui'),('3','Criminal'),('4','Family'),('5','Merger'),('6','Estate'))
+    CHOICES9 = (('Divorce','Divorce'),('Dui','Dui'),('Criminal','Criminal'),('Family','Family'),('Merger','Merger'),('Estate','Estate'))
     password = forms.CharField(label='Password     :',widget=forms.PasswordInput)
     type_user = forms.CharField(label='Type of User :', initial='l', max_length = 250, widget = forms.HiddenInput())
     first_name = forms.CharField(label = 'Enter your first name:', max_length = 250)

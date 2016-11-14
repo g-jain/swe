@@ -1,0 +1,46 @@
+<html>
+{% load static %}
+<head>
+<title>Lawyered</title>
+<meta charset="utf-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link rel="stylesheet" type="text/css" href="{% static 'lawyered/layout.css' %}" />
+<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css?x25758" rel="stylesheet">
+<link href="{%static 'lawyered/layout.css' %}" rel="stylesheet" type="text/css" media="all">
+
+
+</head>
+
+<body id="top">
+<div class="wrapper row0">
+  <div id="topbar" class="hoc clear"> 
+   
+    
+    <div class="fl_right">
+      <ul>
+      <span class="user">
+        <li><a href="#"><i class="fa fa-lg fa-home"></i></a></li>
+        {% if request.user.is_authenticated %}
+        <li><a href="{% url "lawyered:dashboard" %}">Dashboard</a></li>
+		<li><a href="{% url "lawyered:logout" %}">Logout</a></li>
+		{% else %}
+		<li><a href="{% url "lawyered:login" %}">Login</a></li>
+		<li><a href="{% url "lawyered:choose" %}">register</a></li>
+		{% endif %}
+		</span>
+
+      </ul>
+    </div>
+    <!-- ################################################################################################ -->
+  </div>
+</div>
+
+<div class="wrapper row1">
+    <header id="header" class="hoc clear">
+      <div id="logo"> 
+        <!-- ################################################################################################ -->
+        <h1><a href="{% url "lawyered:index" %}">Lawyered</a></h1>
+        <!-- <p>Nullam consequat laoreet</p> -->
+        <!-- ################################################################################################ -->
+      </div>

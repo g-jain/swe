@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+{% load static %}
+<link href="{% static 'lawyered/assets/css/bootstrap.css' %}" rel="stylesheet">
+    <!--external css-->
+    <link href="{% static 'lawyered/assets/font-awesome/css/font-awesome.css' %}" rel="stylesheet" />
+        
+    <!-- Custom styles for this template -->
+    <link href="{% static 'lawyered/assets/css/style.css' %}" rel="stylesheet">
+    <link href="{% static 'lawyered/assets/css/style-responsive.css' %}" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'lawyered/assets/css/normalize.css' %}">
+
+    <script src="{% static 'lawyered/assets/js/prefixfree.min.js' %}"></script>
+  
+{% include "lawyered/headeri.html" %}
+
+      <nav id="mainav" class="clear"> 
+        <!-- ################################################################################################ -->
+        <ul class="clear">
+          <li ><a href="{% url "lawyered:index" %}">Home</a></li>
+              <li><a href="{% url "lawyered:forum" %}">Forums</a></li>
+      <li class='active'><a href="#">Browse Lawyers</a></li> 
+      <li><a href="#footer">Contact Us</a></li>
+      <!--<li><a href="#">Long Link Text</a></li>-->
+  </ul>
+  <!-- ################################################################################################ -->
+</nav>
+</header>
+</div>
+    <div class="content"> 
+      <!-- ################################################################################################ -->
+      <div id="gallery">
+        <figure>
+          <header class="heading"> </header>
+          <ul class="nospace clear">
+            <nav class="pagination">
+        <div class="container">  
+        <h1> List of Lawyers </h1> 
+            {% for person in lawyers %}
+  
+        <div class="col-lg-4 col-md-4 col-sm-4 mb">
+              <div class="product-panel-2 pn">
+                <img src="{% if person.image %}{{person.image.url}}{% else %}<p> No image </p> {% endif %}" width="150" height="200" alt=" ">
+                <h5 class="mt">{{person.first_name}} {{person.last_name}}</h5>
+                <h6>{{person.specialization}}</h6>
+        <a id="open-popup" class="btn btn-small btn-theme04">View my profile
+        </a>
+              </div>
+            </div><!--/col-md-4 -->
+        {% endfor %}    
+          </div>
+
+      </nav>
+          </ul>
+          
+        </figure>
+      </div>
+      <!-- ################################################################################################ -->
+      <!-- ################################################################################################ -->
+      
+      <!-- ################################################################################################ -->
+    </div>
+    
+
+{% include "lawyered/footeri.html" %}
+
+<a id="backtotop" href="#top"><i class="fa fa-chevron-up"></i></a>
+<!-- JAVASCRIPTS -->
+<script src="../layout/scripts/jquery.min.js"></script>
+<script src="../layout/scripts/jquery.backtotop.js"></script>
+<script src="../layout/scripts/jquery.mobilemenu.js"></script>
+</body>
+</html>

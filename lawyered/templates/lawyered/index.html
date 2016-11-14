@@ -1,63 +1,15 @@
 <!DOCTYPE html>
 
 {% load static %}
-<html>
 
-<head>
-<title>Lawyered</title>
-<meta charset="utf-8">
+{% include "lawyered/headeri.html" %}
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<link rel="stylesheet" type="text/css" href="{% static 'lawyered/layout.css' %}" />
-
-<link href="{%static 'lawyered/layout.css' %}" rel="stylesheet" type="text/css" media="all">
-
-
-</head>
-
-<body id="top">
-<div class="wrapper row0">
-  <div id="topbar" class="hoc clear"> 
-   
-    <div class="fl_left">
-      <ul>
-        <li><i class="fa fa-phone"></i> +00 (123) 456 7890</li>
-        <li><i class="fa fa-envelope-o"></i> info@domain.com</li>
-      </ul>
-    </div>
-    <div class="fl_right">
-      <ul>
-      <span class="user">
-        <li><a href="#"><i class="fa fa-lg fa-home"></i></a></li>
-        {% if request.user.is_authenticated %}
-        <li><a href="{% url "lawyered:dashboard" %}">Dashboard</a></li>
-		<li><a href="{% url "lawyered:logout" %}">Logout</a></li>
-		{% else %}
-		<li><a href="{% url "lawyered:login" %}">Login</a></li>
-		<li><a href="{% url "lawyered:choose" %}">register</a></li>
-		{% endif %}
-		</span>
-
-      </ul>
-    </div>
-    <!-- ################################################################################################ -->
-  </div>
-</div>
-
-<div class="wrapper row1">
-    <header id="header" class="hoc clear">
-      <div id="logo"> 
-        <!-- ################################################################################################ -->
-        <h1><a href="{% url "lawyered:index" %}">Lawyered</a></h1>
-        <!-- <p>Nullam consequat laoreet</p> -->
-        <!-- ################################################################################################ -->
-      </div>
       <nav id="mainav" class="clear"> 
         <!-- ################################################################################################ -->
         <ul class="clear">
           <li class="active"><a href="{% url "lawyered:index" %}">Home</a></li>
-              <li><a href="#">How it Works?</a></li>
-      <li><a href="#">About</a></li>
+              <li><a href="#cta">Forums</a></li>
+      <li><a href="{% url "lawyered:browse" %}">Browse Lawyers</a></li> 
       <li><a href="#footer">Contact Us</a></li>
       <!--<li><a href="#">Long Link Text</a></li>-->
   </ul>
@@ -183,6 +135,7 @@
 </div>
 <div class="wrapper row4">
   <footer id="footer" class="hoc clear"> 
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css?x25758" rel="stylesheet">
     <!-- ################################################################################################ -->
     <div class="one_third first">
       <h6 class="heading">Follow Us</h6>
@@ -208,16 +161,16 @@
       </ul>
     </div>
     <div class="one_third">
-      <h6 class="heading">Ask Queries</h6>
+      <h6 class="heading">Newsletter signup</h6>
       <form method="post" action="#">
         <fieldset>
           <legend>Newsletter:</legend>
           <input class="btmspace-15" type="text" value="" placeholder="Name">
           <input class="btmspace-15" type="text" value="" placeholder="Email">
-          <button type="submit" value="submit">Submit</button>
+          <button type="#" value="submit">Submit</button>
         </fieldset>
       </form>
-    </div>
+    </div>  
   </footer>
 </div>
 <a id="backtotop" href="#top"><i class="fa fa-chevron-up"></i></a>
