@@ -2,61 +2,14 @@
 
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="Dashboard">
-    <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
 
-    <title>Dashboard</title>
+    <title>Cases</title>
 
-    <!-- Bootstrap core CSS -->
-	<link href="{% static 'lawyered/assets/css/bootstrap.css' %}" rel="stylesheet">
-	<!--external css-->
-	<link href="{% static 'lawyered/assets/font-awesome/css/font-awesome.css' %}" rel="stylesheet" />
-	<link rel="stylesheet" type="text/css" href="{% static 'lawyered/assets/css/zabuto_calendar.css' %}">
-	<link rel="stylesheet" type="text/css" href="{% static 'lawyered/assets/js/gritter/css/jquery.gritter.css' %}" />
-	<link rel="stylesheet" type="text/css" href="{% static 'lawyered/assets/lineicons/style.css' %}">    
-	
-	<!-- Custom styles for this template -->
-	<link href="{% static 'lawyered/assets/css/style.css' %}" rel="stylesheet">
-	<link href="{% static 'lawyered/assets/css/style-responsive.css' %}" rel="stylesheet">
-
-	<script src="{% static 'lawyered/assets/js/chart-master/Chart.js' %}"></script>
-    
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
   </head>
 
   <body>
 
-  <section id="container" >
-      <!-- **********************************************************************************************************************************************************
-      TOP BAR CONTENT & NOTIFICATIONS
-      *********************************************************************************************************************************************************** -->
-      <!--header start-->
-      <header class="header black-bg">
-            <!--logo start-->
-            <a href="index.html" class="logo"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; LAWYERED</b></a>
-            <!--logo end-->
-            <div class="top-menu">
-				<ul class="nav pull-right top-menu">
-					<li><a class="TopMenu" href="#">How it Works?</a></li>
-					<li><a class="TopMenu" href="#">About</a></li>
-					<li><a class="TopMenu" href="#">Contact Us</a></li>
-					<li><a class="logout" href="login.html">Logout</a></li>
-            	</ul>
-            </div>
-        </header>
-      <!--header end-->
-      
-      <!-- **********************************************************************************************************************************************************
-      MAIN SIDEBAR MENU
-      *********************************************************************************************************************************************************** -->
+  {% include 'lawyered/headerd.html' %}
       <!--sidebar start-->
       <aside>
           <div id="sidebar"  class="nav-collapse ">
@@ -168,26 +121,6 @@
 	<script src="{% static 'lawyered/assets/js/sparkline-chart.js' %}"></script>    
 	<script src="{% static 'lawyered/assets/js/zabuto_calendar.js' %}"></script>	
 	
-	<script type="text/javascript">
-        $(document).ready(function () {
-        var unique_id = $.gritter.add({
-            // (string | mandatory) the heading of the notification
-            title: 'Welcome to LAWYERED!',
-            // (string | mandatory) the text inside the notification
-            text: 'See your cases, search or browse for lawyers or add a new case. Start Consulting right here right now!.',
-            // (string | optional) the image to display on the left
-            //image: 'assets/img/ui-sam.jpg',
-            // (bool | optional) if you want it to fade out on its own or just sit there
-            sticky: true,
-            // (int | optional) the time you want it to be alive for before fading out
-            time: '',
-            // (string | optional) the class name you want to apply to that specific message
-            class_name: 'my-sticky-class'
-        });
-
-        return false;
-        });
-	</script>
 	
 	<script type="application/javascript">
         $(document).ready(function () {

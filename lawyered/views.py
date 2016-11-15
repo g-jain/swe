@@ -172,8 +172,11 @@ def person_list(request):
         if person.type_user == 'l':
             lawyers.append(person)
     query = request.GET.get("q")
+    query1 = request.GET.get("spe")
+    if query1 :
+        lawyers = people.filter(specialization__contains = query1)
     if query:
-        lawyers = lawyers.filter(area__contains = query)
+        lawyers = people.filter(area__contains = query)
     return render(request,'lawyered/search.html',{'lawyers': lawyers, 'username':request.user.username})
 
 #   
@@ -708,8 +711,16 @@ def duicasedetail(request, duiForm_id):
 def choose(request):
     return render(request, 'lawyered/choose.html')
     
-def up(request):
-    return render(request, 'lawyered/profileuser.html')
+def up(request, user_id):
+    user_ob = User.objects.get(id=user_id)
+    user = UserProfile.objects.get(user=user_ob)
+    det = User.objects.get(pk=user_id)
+    form = UserRegistrationForm(request.POST or None, instance= det)
+    if form.is_valid():
+        form.save()
+        return render(request,'lawyered/done.html', {'username':request.user.username})
+    else:
+        return render(request, 'lawyered/profileuser.html', {'user' : user, 'username':request.user.username, 'form' : form})
 
 def browse(request):
     people = UserProfile.objects.all()
