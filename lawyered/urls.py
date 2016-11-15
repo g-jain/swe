@@ -83,6 +83,7 @@ urlpatterns = [
     url(r'^estate/(?P<estateForm_id>\d+)/$', views.estcasedetail, name='estcasedetail'),
     url(r'^dui/(?P<duiForm_id>\d+)/$', views.duicasedetail, name='duicasedetail'),
     url(r'^browse/$', views.browse, name='browse'),
+    url(r'^lawyercases/$', views.lawyercases, name='lawyercases'),
 
 ]
 #url(r'^$', views.dashboard, name='dashboard'),url(r'^logout-then-login/$','django.contrib.auth.views.logout_then_login',name='logout_then_login'),url(r'^login/$', views.user_login,name='login'),

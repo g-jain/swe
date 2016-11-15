@@ -314,22 +314,22 @@ kbd {
    
         <div class="container">  
         <h1> List of Lawyers </h1> 
-            {% for person in persons %}
+            {% for person in lawyers %}
   
         <div class="col-lg-4 col-md-4 col-sm-4 mb">
               <div class="product-panel-2 pn">
-                <img src="{% if person.image %}{{person.image.url}}{% else %}<p> No image </p> {% endif %}" width="150" height="200" alt=" ">
-                <h5 class="mt">{{person.name}}</h5>
+                <img src="{% if person.picture %}{{person.picture.url}}{% else %}<p> No image </p> {% endif %}" width="150" height="200" alt=" ">
+                <h5 class="mt">{{person.first_name}} {{person.last_name}}</h5>
                 <h6>{{person.specialization}}</h6>
 				<a id="open-popup" class="btn btn-small btn-theme04">View my profile
 				</a>
               </div>
-            </div><!--/col-md-4 -->
+            </div>
         {% endfor %}    
           </div>
          
-		</section> <!--/wrapper -->
-	  </section> <!-- /MAIN CONTENT -->
+		</section> 
+	  </section> 
 	  
 	  <div class="popup" id="popup">
   <div class="popup__inner">
@@ -337,9 +337,7 @@ kbd {
       <kbd>close</kbd><a href="#" class="popup__close"></a>  
     </header>
 	
-    <p><img src="http://www.fillmurray.com/124/124" class="img-circle" width="100"></p><!--
-    
-    --><section class="profile__details">
+    <section class="profile__details">
       <ul class="profile__stats">
         <li>
           <h4 class="profile_stat__heading">Forum Activeness</h4>

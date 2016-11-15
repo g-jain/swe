@@ -139,13 +139,42 @@ def dashboard(request):
     # Add a piece of code for all forms
     return render(request, 'lawyered/dashboard.html', {'username': username, 'divcases':divcases, 'duicases':duicases, 'cricases' : cricases,'mercases': mercases, 'precases' : precases, 'estcases' : estcases })
 
+def lawyercases(request):
+    username = request.user.username
+    divcases = list(divorceForm.objects.all())
+    duicases = list(duiForm.objects.all())
+    cricases = list(criminalForm.objects.all())
+    precases = list(prenupForm.objects.all())
+    mercases = list(mergerForm.objects.all())
+    estcases = list(estateForm.objects.all())
+
+    cases = divcases+duicases+cricases+precases+mercases+estcases
+    paginator = Paginator(cases, 10)
+    page = request.GET.get('page')
+    try:
+        case = paginator.page(page)
+    except PageNotAnInteger:
+        # If page is not an integer, deliver first page.
+        case = paginator.page(1)
+    except EmptyPage:
+        # If page is out of range (e.g. 9999), deliver last page of results.
+        case = paginator.page(paginator.num_pages)
+
+
+    # Add a piece of code for all forms
+    return render(request, 'lawyered/lawyercases.html', {'username': username, 'case':case, 'cases':cases })
+
 #Now get all lawyer objects
 def person_list(request):
-    persons = person.objects.all()
+    people = UserProfile.objects.all()
+    lawyers=[]
+    for person in people :
+        if person.type_user == 'l':
+            lawyers.append(person)
     query = request.GET.get("q")
     if query:
-        persons = persons.filter(area__contains = query)
-    return render(request,'lawyered/search.html',{'persons': persons, 'username':request.user.username})
+        lawyers = lawyers.filter(area__contains = query)
+    return render(request,'lawyered/search.html',{'lawyers': lawyers, 'username':request.user.username})
 
 #   
 def search_question(request):

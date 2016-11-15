@@ -119,7 +119,7 @@ class divorceForm(models.Model):
 	custody = models.CharField(max_length=250)
 	budget = models.CharField(max_length=250)
 	details = models.CharField(max_length=250)
-	casetype = models.CharField(max_length=250, default="Divorce")
+	casetype = models.CharField(max_length=250, default="divorce")
 	
 class duiForm(models.Model):
 	name = models.CharField(max_length=250)
@@ -132,7 +132,7 @@ class duiForm(models.Model):
 	next_date = models.DateField(default = datetime.date.today)
 	budget = models.CharField(max_length=250)
 	details = models.CharField(max_length=250)
-	casetype = models.CharField(max_length=250, default="Dui")
+	casetype = models.CharField(max_length=250, default="dui")
 	
 class criminalForm(models.Model):
 	name = models.CharField(max_length=250)
@@ -145,7 +145,7 @@ class criminalForm(models.Model):
 	worked = models.CharField(max_length=250)
 	budget = models.CharField(max_length=250)
 	details = models.CharField(max_length=250)
-	casetype = models.CharField(max_length=250, default="Criminal")
+	casetype = models.CharField(max_length=250, default="criminal")
 	
 
 class prenupForm(models.Model):
@@ -157,7 +157,7 @@ class prenupForm(models.Model):
 	assets_exclude = models.CharField(max_length=250)
 	exclude_details = models.CharField(max_length=250)
 	budget = models.CharField(max_length=250)
-	casetype = models.CharField(max_length=250, default="Family")
+	casetype = models.CharField(max_length=250, default="prenup")
 
 class mergerForm(models.Model):
 	name = models.CharField(max_length=250)
@@ -166,7 +166,7 @@ class mergerForm(models.Model):
 	circumstances = models.CharField(max_length=250)
 	need = models.CharField(max_length=250)
 	budget = models.CharField(max_length=250)
-	casetype = models.CharField(max_length=250, default="Merger")
+	casetype = models.CharField(max_length=250, default="merger")
 
 class estateForm(models.Model):
 	name = models.CharField(max_length=250)
@@ -175,4 +175,4 @@ class estateForm(models.Model):
 	details = models.CharField(max_length=250)
 	need = models.CharField(max_length=250)
 	budget = models.CharField(max_length=250)
-	casetype = models.CharField(max_length=250, default="Estate")
+	casetype = models.CharField(max_length=250, default="estate")
