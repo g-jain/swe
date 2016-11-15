@@ -88,7 +88,9 @@ cool {
     {% if question.closed %}
     <p class="pull-right">This Question has been closed.</p>
     {% else %}
+    {% ifequal request.user.userprofile.type_user "l" %}
     <a class="btn btn-primary btn-sm pull-right" href="/answer/{{ question.id }}" role="button">Answer this Question!</a>
+    {% endifequal %}
     {% endif %}
   </p>
 </div>
