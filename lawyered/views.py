@@ -131,6 +131,8 @@ def registerlawyer(request):
 @login_required
 def dashboard(request):
     username = request.user.username
+    profile = request.user.userprofile
+    usertype = profile.type_user
     divcases = divorceForm.objects.filter(name__contains = username)
     duicases = duiForm.objects.filter(name__contains = username)
     cricases = criminalForm.objects.filter(name__contains = username)
@@ -138,7 +140,10 @@ def dashboard(request):
     mercases = mergerForm.objects.filter(name__contains = username)
     estcases = estateForm.objects.filter(name__contains = username)
     # Add a piece of code for all forms
-    return render(request, 'lawyered/dashboard.html', {'username': username, 'divcases':divcases, 'duicases':duicases, 'cricases' : cricases,'mercases': mercases, 'precases' : precases, 'estcases' : estcases })
+    if usertype == 'c' :
+        return render(request, 'lawyered/dashboard.html', {'username': username, 'divcases':divcases, 'duicases':duicases, 'cricases' : cricases,'mercases': mercases, 'precases' : precases, 'estcases' : estcases })
+    else:
+        return render(request,'lawyered/lawyerdashboard.html', {'username': username})
 
 def lawyerdashboard(request):
     username = request.user.username
