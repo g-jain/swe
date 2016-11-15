@@ -739,7 +739,7 @@ def lp(request, user_id):
         form.save()
         return render(request,'lawyered/done.html', {'username':request.user.username})
     else:
-        return render(request, 'lawyered/profileuser.html', {'user' : user, 'username':request.user.username, 'form' : form})
+        return render(request, 'lawyered/profilelaw.html', {'user' : user, 'username':request.user.username, 'form' : form})
 
 def browse(request):
     people = UserProfile.objects.all()
