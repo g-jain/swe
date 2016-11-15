@@ -729,6 +729,18 @@ def up(request, user_id):
     else:
         return render(request, 'lawyered/profileuser.html', {'user' : user, 'username':request.user.username, 'form' : form})
 
+def lp(request, user_id):
+    user_ob = User.objects.get(id=user_id)
+    user = UserProfile.objects.get(user=user_ob)
+    det = User.objects.get(pk=user_id)
+    form = LawyerRegistrationForm(request.POST or None, instance= det)
+    
+    if form.is_valid():
+        form.save()
+        return render(request,'lawyered/done.html', {'username':request.user.username})
+    else:
+        return render(request, 'lawyered/profileuser.html', {'user' : user, 'username':request.user.username, 'form' : form})
+
 def browse(request):
     people = UserProfile.objects.all()
     lawyers=[]

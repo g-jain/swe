@@ -85,18 +85,18 @@ WSGI_APPLICATION = 'project1.wsgi.application'
 #if ON_HEROKU :
 DATABASES = {'default': dj_database_url.config()}
 #else:
-#DATABASES = {
+# DATABASES = {
 # 	'default': {
 # 		'ENGINE': 'django.db.backends.postgresql_psycopg2',
 # 		'NAME': 'lawyered',
-# 		'USER': 'postgres',
-# 		'PASSWORD': 'hans',
+# 		'USER': 'lawyer',
+# 		'PASSWORD': 'password',
 # 		'HOST': 'localhost',
 # 		'PORT': '',
 # 		#'ENGINE': 'django.db.backends.sqlite3',
 # 		#'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
 # 	}
-#}
+}
 
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
