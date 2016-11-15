@@ -50,6 +50,7 @@ urlpatterns = [
     url(r'^choose/$',views.choose, name='choose'),
 	url(r'^register/$', views.register, name='register'),
 	url(r'^profileuser/(?P<user_id>\d+)/$', views.up, name='profileuser'),
+	url(r'^profilelaw/(?P<user_id>\d+)/$', views.lp, name='profileuser'),
     url(r'^registerlawyer/$', views.registerlawyer, name='registerlawyer'),
     url(r'^dashboard/$',views.dashboard,name='dashboard'),
 	url(r'^search/$', views.person_list, name='search'),
