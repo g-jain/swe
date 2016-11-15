@@ -50,6 +50,7 @@ def login_view(request):
     return render(request, 'lawyered/login.html', {'form': form})
 
 
+
 def forumlogin(request):
     context = RequestContext(request)
 
@@ -138,6 +139,11 @@ def dashboard(request):
     estcases = estateForm.objects.filter(name__contains = username)
     # Add a piece of code for all forms
     return render(request, 'lawyered/dashboard.html', {'username': username, 'divcases':divcases, 'duicases':duicases, 'cricases' : cricases,'mercases': mercases, 'precases' : precases, 'estcases' : estcases })
+
+def lawyerdashboard(request):
+    username = request.user.username
+    return render(request,'lawyered/lawyerdashboard.html', {'username': username})
+
 
 def lawyercases(request):
     username = request.user.username
@@ -716,6 +722,7 @@ def up(request, user_id):
     user = UserProfile.objects.get(user=user_ob)
     det = User.objects.get(pk=user_id)
     form = UserRegistrationForm(request.POST or None, instance= det)
+    
     if form.is_valid():
         form.save()
         return render(request,'lawyered/done.html', {'username':request.user.username})

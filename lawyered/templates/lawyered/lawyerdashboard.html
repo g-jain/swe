@@ -10,52 +10,9 @@
   <body>
 
 {% include 'lawyered/headerd.html' %}
+{% include 'lawyered/sidebarlaw.html' %}
       
-      <!-- **********************************************************************************************************************************************************
-      MAIN SIDEBAR MENU
-      *********************************************************************************************************************************************************** -->
-      <!--sidebar start-->
-      <aside>
-          <div id="sidebar"  class="nav-collapse ">
-              <!-- sidebar menu start-->
-              <ul class="sidebar-menu" id="nav-accordion">
-              
-              	  <p class="centered"><a href="profile.html"><img src="{%static 'lawyered/assets/img/ui-sam.jpg' %}" class="img-circle" width="60"></a></p>
-              	  <h5 class="centered">Name</h5>
-              	  	
-                  <li class="mt">
-                      <a class="active" href="index.html">
-                          <i class="fa fa-dashboard"></i>
-                          <span>Dashboard</span>
-                      </a>
-                  </li>
-				  
-				  <li class="mt">
-                       <a href="{% url 'lawyered:lawyercases' %}">
-						  <i class="fa fa-tasks"></i>
-                          <span>Cases</span>
-                      </a>
-                  </li>
-				  
-				  <li class="mt">
-                       <a href="search.html">
-						  <i class="fa fa-book"></i>
-                          <span>Appointments</span>
-                      </a>
-                  </li>
-				  
-				  <li class="mt">
-                       <a href="search.html">
-						  <i class="fa fa-cogs"></i>
-                          <span>Settings</span>
-                      </a>
-                  </li>
-
-              </ul>
-              <!-- sidebar menu end-->
-          </div>
-      </aside>
-      <!--sidebar end-->
+      
       
       <!-- **********************************************************************************************************************************************************
       MAIN CONTENT
@@ -63,7 +20,7 @@
       <!--main content start-->
       <section id="main-content">
           <section class="wrapper site-min-height">
-			<h3><i class="fa fa-angle-right"></i> Case you might be interested in</h3>
+			<h3><i class="fa fa-angle-right"></i> Your Cases</h3>
 
               <div class="row mt">
           		<div class="col-lg-12">

@@ -1,0 +1,43 @@
+{% load static %}
+
+<aside>
+  <div id="sidebar"  class="nav-collapse ">
+  <!-- sidebar menu start-->
+    <ul class="sidebar-menu" id="nav-accordion">
+              
+   	  <p class="centered"><a href="#"><img src="{%static 'lawyered/assets/img/ui-sam.jpg' %}" class="img-circle" width="60"></a></p>
+   	  <h5 class="centered">{{ username }}</h5>
+           	  	
+      <li class="mt">
+        <a href="{% url 'lawyered:lawyerdashboard' %}">
+          <i class="fa fa-dashboard"></i>
+              <span>Dashboard</span>
+        </a>
+      </li>
+				  
+		  <li class="mt">
+        <a href="{% url 'lawyered:lawyercases' %}">
+  			  <i class="fa fa-tasks"></i>
+              <span>Cases</span>
+        </a>
+      </li>
+				  
+		  <li class="mt">
+        <a href="{% url 'lawyered:forum' %}">
+   			  <i class="fa fa-book"></i>
+          <span>Forum</span>
+        </a>
+      </li>
+				  
+		  <li class="mt">
+        <a href="/profileuser/{{ user.id }}">
+				  <i class="fa fa-cogs"></i>
+          <span>Profile</span>
+        </a>
+      </li>
+
+     </ul>
+     <!-- sidebar menu end-->
+  </div>
+</aside>
+      <!--sidebar end-->
