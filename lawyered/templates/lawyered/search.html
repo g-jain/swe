@@ -74,6 +74,7 @@ body {
   max-height: 100%;
   background-color: #f2f2f2;
   width: 100%;
+  height: 65%;
   max-width: 70em;
   margin: 3em auto 0;
   padding-bottom: 10em;
@@ -242,7 +243,7 @@ kbd {
                 <img src="{% if person.picture %}{{person.picture.url}}{% else %}<p> No image </p> {% endif %}" width="150" height="200" alt=" ">
                 <h5 class="mt">{{person.first_name}} {{person.last_name}}</h5>
                 <h6>{{person.specialization}}</h6>
-				<a class="btn btn-small btn-theme04" href="{%static '>View my profile
+				<a id="open-popup" class="btn btn-small btn-theme04" href="">View my profile
 				</a>
               </div>
             </div>
@@ -258,23 +259,59 @@ kbd {
       <kbd>close</kbd><a href="#" class="popup__close"></a>  
     </header>
 	
-    <section class="profile__details">
-      <ul class="profile__stats">
-        <li>
-          <h4 class="profile_stat__heading">Forum Activeness</h4>
-          <div class="profile_stat__number">17</div>
-        </li><!--
-        --><li>
-          <h3 class="profile_stat__heading">Rating</h3>
-          <div class="profile_stat__number">3<i class="fa fa-star"></i> </div>
-        </li><!--
-      </ul>
-      <h2 class="profile__name">Bart Veneman</h2>
-      <ul class="social">
-        <li><a href="#"><i class="fa fa-github"></i></a></li>
-        --><li class="location"><i class="fa fa-map-marker"></i><span>Ommen, NL</span></li>
-      </ul>
-    </section>
+	<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
+<div class="container">
+	<div class="row">
+		<div class="col-md-offset-2 col-md-8 col-lg-offset-2 col-lg-6">
+    	 <div class="well profile">
+            <div class="col-sm-12">
+                <div class="col-xs-12 col-sm-8">
+                    <h2>Mr Alok Singh</h2>
+                    <p><strong>About: </strong> A highly acclaimed lawyer who has managed fame in a few years by helping clients resolve their tax issues. </p>
+                    <p><strong>Bar Number: </strong> 45310933 </p>
+                    <p><strong>Expertise: </strong>
+                        <span class="tags">Tax Law</span> 
+                        <span class="tags">DUI</span>
+                        <span class="tags">Prenups</span>
+                    </p>
+					<p><strong>Send an Email: </strong> alok@yahoo.in </p>
+					<p><strong>Give a Call: </strong> +91-9899912345 </p>
+                </div>             
+                <div class="col-xs-12 col-sm-4 text-center">
+                    <figure>
+                        <p><img src="{% static 'lawyered/images/demo/backgrounds/lawyer3.jpg' %}" alt="" class="img-circle" width="100" height="100"></p>
+                        <figcaption class="ratings">
+                            <p>Ratings
+                            <a href="#">
+                                <span class="fa fa-star"></span>
+                            </a>
+                            <a href="#">
+                                <span class="fa fa-star"></span>
+                            </a>
+                            <a href="#">
+                                <span class="fa fa-star"></span>
+                            </a>
+                            <a href="#">
+                                <span class="fa fa-star"></span>
+                            </a>
+                            <a href="#">
+                                 <span class="fa fa-star-o"></span>
+                            </a> 
+                            </p>
+                        </figcaption>
+                    </figure>
+                </div>
+            </div>            
+    	 </div>                 
+		</div>
+	</div>
+</div>
+	
+	
+	
+	
+	
+	
   </div><!-- /popup__inner -->
 </div><!-- /popup -->
 
