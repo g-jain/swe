@@ -10,7 +10,11 @@
 
 <body>
 {% include 'lawyered/headerd.html' %}
+{% ifequal request.user.userprofile.type_user "c" %}
 {% include 'lawyered/sidebar.html' %}
+{% else %}
+{% include 'lawyered/sidebarlaw.html' %}
+{% endifequal %}
 
 <!--main content start-->
 <section id="main-content">

@@ -708,19 +708,32 @@ def divcasedetail(request, divorceForm_id):
     
 def cricasedetail(request, criminalForm_id):
     ccase = criminalForm.objects.get(pk=criminalForm_id)
-    return render(request, 'lawyered/cricasedet.html', {'ccase':ccase,'username':request.user.username})
+    profile = request.user.userprofile
+    username = request.user.username
+    usertype = profile.type_user
+
+    return render(request, 'lawyered/cricasedet.html', {'ccase':ccase,'username':request.user.username, 'usertype' : usertype})
     
 def mercasedetail(request, mergerForm_id):
     mcase = mergerForm.objects.get(pk=mergerForm_id)
-    return render(request, 'lawyered/mercasedet.html', {'mcase':mcase,'username':request.user.username})
+    profile = request.user.userprofile
+    username = request.user.username
+    usertype = profile.type_user
+    return render(request, 'lawyered/mercasedet.html', {'mcase':mcase,'username':request.user.username, 'usertype' : usertype})
     
 def estcasedetail(request, estateForm_id):
     ecase = estateForm.objects.get(pk=estateForm_id)
-    return render(request, 'lawyered/estcasedet.html', {'ecase':ecase,'username':request.user.username})
+    profile = request.user.userprofile
+    username = request.user.username
+    usertype = profile.type_user
+    return render(request, 'lawyered/estcasedet.html', {'ecase':ecase,'username':request.user.username, 'usertype' : usertype})
 
 def duicasedetail(request, duiForm_id):
     ducase = duiForm.objects.get(pk=duiForm_id)
-    return render(request, 'lawyered/duicasedet.html', {'ducase': ducase,'username':request.user.username})
+    profile = request.user.userprofile
+    username = request.user.username
+    usertype = profile.type_user
+    return render(request, 'lawyered/duicasedet.html', {'ducase': ducase,'username':request.user.username, 'usertype' : usertype})
 
 def choose(request):
     return render(request, 'lawyered/choose.html')
