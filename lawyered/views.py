@@ -697,7 +697,10 @@ def prenup_update(request, prenupForm_id):
 
 def divcasedetail(request, divorceForm_id):
     dcase = divorceForm.objects.get(pk=divorceForm_id)
-    return render(request, 'lawyered/divcasedet.html', {'dcase': dcase, 'username':request.user.username} )
+    profile = request.user.userprofile
+    username = request.user.username
+    usertype = profile.type_user
+    return render(request, 'lawyered/divcasedet.html', {'dcase': dcase, 'username':request.user.username, 'usertype' : usertype} )
     
 # def precasedetail(request, prenupForm_id):
 #     pcase = prenupForm.objects.get(pk=prenupForm_id)

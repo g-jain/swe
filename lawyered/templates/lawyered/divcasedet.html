@@ -96,10 +96,25 @@
                 <p class="form-control-static">{{dcase.details}}</p>
               </div>
             </div>
+            <div class = "form group">
+              <label class="col-lg-4 col-md-4 col-sm-4 col-xs-4 control-label"><b>case approved?</b></label>
+              <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                <p class="form-control-static">
+                  {% ifequal request.user.userprofile.type_user "c" %}
+                  <input type="radio" name="gender" value="yes" checked disabled="True"> Yes<br>
+                  <input type="radio" name="gender" value="no"> No<br>
+                  {% else %}
+                  <input type="radio" name="gender" value="yes" checked > Yes<br>
+                  <input type="radio" name="gender" value="no"> No<br>
+                  {% endifequal %}
+                </p>
+              </div>
+            </div>
 
           </div>
         </div>
       </div>
+
     </form>
 
   </section>
